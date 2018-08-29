@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yykit on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/tags/yykit/</link>
+    <description>Recent content in Yykit on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/tags/yykit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>YYCache 源码收获</title>
+      <link>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</guid>
+      <description>YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S</description>
+    </item>
+    
+  </channel>
+</rss>

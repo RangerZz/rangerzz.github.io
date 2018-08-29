@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>关于 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/categories/%E5%85%B3%E4%BA%8E/</link>
+    <description>Recent content in 关于 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 21 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/categories/%E5%85%B3%E4%BA%8E/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>第一篇博文</title>
+      <link>https://rangerzz.github.io/post/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</guid>
+      <description>本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考</description>
+    </item>
+    
+  </channel>
+</rss>
