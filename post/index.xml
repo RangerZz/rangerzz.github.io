@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Ranger&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://rangerzz.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ReplayKit 2录屏直播</title>
+      <link>https://rangerzz.github.io/post/replaykit-2%E5%BD%95%E5%B1%8F%E7%9B%B4%E6%92%AD/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/replaykit-2%E5%BD%95%E5%B1%8F%E7%9B%B4%E6%92%AD/</guid>
+      <description>概览 iOS 11新添加了用户从控制中心开启全局的录屏功能(在此之前只能实现应用内录制),这个功能和API(ReplayKit 2)的添加,使得录屏直</description>
+    </item>
     
     <item>
       <title>YYCache 源码收获</title>
