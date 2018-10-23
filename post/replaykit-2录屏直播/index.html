@@ -68,7 +68,7 @@
 
 <meta itemprop="datePublished" content="2018-10-23T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-10-23T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2455">
+<meta itemprop="wordCount" content="2566">
 
 
 
@@ -294,8 +294,8 @@
             <a href="https://rangerzz.github.io/categories/%E7%9B%B4%E6%92%AD/"> 直播 </a>
             
           </div>
-        <span class="more-meta"> 约 2455 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span class="more-meta"> 约 2566 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
 
         
         
@@ -317,8 +317,8 @@
 <li><a href="#概览">概览</a></li>
 <li><a href="#介绍extension">介绍Extension</a>
 <ul>
-<li><a href="#broadcast-upload-extension">&lsquo;Broadcast Upload Extension&rsquo;</a></li>
-<li><a href="#broadcast-setup-ui-extension">&lsquo;Broadcast Setup UI Extension&rsquo;</a></li>
+<li><a href="#broadcast-upload-extension">Broadcast Upload Extension</a></li>
+<li><a href="#broadcast-setup-ui-extension">Broadcast Setup UI Extension</a></li>
 </ul></li>
 <li><a href="#实践实现">实践实现</a>
 <ul>
@@ -346,12 +346,12 @@
 
 <p>Xcode 9中,添加了&rsquo;Broadcast Upload Extension&rsquo; 和 &lsquo;Broadcast Setup UI Extension&rsquo;,用来实现相关功能,需要在File -&gt; New -&gt; Target中创建他们.</p>
 
-<h3 id="broadcast-upload-extension">&lsquo;Broadcast Upload Extension&rsquo;</h3>
+<h3 id="broadcast-upload-extension">Broadcast Upload Extension</h3>
 
 <p>最为核心的是&rsquo;Broadcast Upload Extension&rsquo;(后简称&rsquo;Upload&rsquo;),&lsquo;Upload&rsquo;中有多个系统回调方法,被用来告知录屏的开始,结束,暂停,恢复和采集到的音视频信息,大多数需求要通过该Extension实现.
 &lsquo;Upload&rsquo;独立于App存在,运行时也不依赖App,是一个独立的进程,也就是说,用户并不需要启动App,就可以使用录屏功能,拥有便捷,轻量的特点.</p>
 
-<h3 id="broadcast-setup-ui-extension">&lsquo;Broadcast Setup UI Extension&rsquo;</h3>
+<h3 id="broadcast-setup-ui-extension">Broadcast Setup UI Extension</h3>
 
 <p>在创建&rsquo;Broadcast Upload Extension&rsquo;时,Xcode会询问你是否需要一并创建&rsquo;Broadcast Setup UI Extension&rsquo;(后称&rsquo;Setup UI&rsquo;),此处可以选择不创建.
 &lsquo;Setup UI&rsquo;在iOS11添加ReplayKit 2之前需要使用,在ReplayKit 2后,用户可以在控制中心发起全局的录屏功能后本插件就没那么重要了,由于本文主要介绍ReplayKit 2,故不做详细介绍了(我觉得这是个遗留问题,ReplayKit 2新特性更好更方便,完全可以替代之前的方案).</p>
@@ -434,22 +434,23 @@
 </div>
 </div>
 <p>根据方法名和注释,显而易见的知道这些方法分别在录屏开始,暂停,恢复,结束和音视频数据是被调用,并且会传递一些信息.
-简单说一下这几个方法:
-* -(void)broadcastStartedWithSetupInfo:(NSDictionary<NSString *,NSObject *> *)setupInfo;
-    本方法在用户在 控制中心-&gt;屏幕录制-&gt;开始直播 点击321倒数结束后被调用.此处就可以开始初始化推流器,开启推流等工作,至于setupInfo,是&rsquo;Setup UI&rsquo;传递过来的一些初始化信息,当然如果不使用&rsquo;Setup UI&rsquo;,还是有多种方式传递&rsquo;Upload&rsquo;插件本身无法获取的信息.</p>
+简单说一下这几个方法:</p>
 
 <ul>
-<li><p>-(void)broadcastFinished;
-本方法在用户 点击屏幕状态栏-&gt;系统弹窗-&gt;停止 后被调用.此处可以认为&rsquo;Upload&rsquo;插件进程即将被结束,需要做一些资源和内存释放等工作,然后插件进程结束.</p></li>
+<li><p><code>-(void)broadcastStartedWithSetupInfo:(NSDictionary&lt;NSString *,NSObject *&gt; *)setupInfo;</code>本方法在用户在 控制中心-&gt;屏幕录制-&gt;开始直播 点击321倒数结束后被调用.此处就可以开始初始化推流器,开启推流等工作,至于setupInfo,是&rsquo;Setup UI&rsquo;传递过来的一些初始化信息,当然如果不使用&rsquo;Setup UI&rsquo;,还是有多种方式传递&rsquo;Upload&rsquo;插件本身无法获取的信息.</p></li>
 
-<li><p>-(void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;
-本方法在-(void)broadcastStartedWithSetupInfo:(NSDictionary<NSString *,NSObject *> *)setupInfo被调用后,会不停的被调用,用来获取采集到的音视频信息,通过sampleBufferType区分.此处可以将音视频信息编码推流.</p></li>
+<li><p><code>-(void)broadcastFinished;</code>本方法在用户 点击屏幕状态栏-&gt;系统弹窗-&gt;停止 后被调用.此处可以认为&rsquo;Upload&rsquo;插件进程即将被结束,需要做一些资源和内存释放等工作,然后插件进程结束.</p></li>
+
+<li><p><code>-(void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;</code>本方法在<code>-(void)broadcastStartedWithSetupInfo:(NSDictionary&lt;NSString *,NSObject *&gt; *)setupInfo;</code>被调用后,会不停的被调用,用来获取采集到的音视频信息,通过sampleBufferType区分.此处可以将音视频信息编码推流.</p></li>
 </ul>
 
 <h3 id="消息传递与数据共享">消息传递与数据共享</h3>
 
-<p>前文说的,&lsquo;Upload&rsquo;和App是相互独立的两个进程,&lsquo;Upload&rsquo;和App如何进行消息传递和数据共享呢,大致有如下几种方式:
-* 剪贴版:通过写入剪贴板,然后插件读取剪贴板传递一些简单数据,但是可靠性太差,可以作为一种辅助手段.</p>
+<p>前文说的,&lsquo;Upload&rsquo;和App是相互独立的两个进程,&lsquo;Upload&rsquo;和App如何进行消息传递和数据共享呢,大致有如下几种方式:</p>
+
+<ul>
+<li>剪贴版:通过写入剪贴板,然后插件读取剪贴板传递一些简单数据,但是可靠性太差,可以作为一种辅助手段.</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">1
@@ -463,33 +464,64 @@ NSString *a = paste.string;// 读取</pre></td></tr></table>
 </div>
 </div>
 <ul>
-<li>本地推送:插件可以发送本地通知,可以用来提示用户一些录屏事件,也可以提示用户点击通知,激活App做一些操作.
-```</li>
-<li>(void)sendLocalNotificationToHostAppWithTitle:(NSString *)title msg:(NSString *)msg userInfo:(NSDictionary *)userInfo {
+<li>本地推送:插件可以发送本地通知,可以用来提示用户一些录屏事件,也可以提示用户点击通知,激活App做一些操作.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">- (void)sendLocalNotificationToHostAppWithTitle:(NSString *)title msg:(NSString *)msg userInfo:(NSDictionary *)userInfo {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNMutableNotificationContent <em>content = [[UNMutableNotificationContent alloc] init];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = [NSString localizedUserNotificationStringForKey:title arguments:nil];
     content.body = [NSString localizedUserNotificationStringForKey:msg  arguments:nil];
     content.sound = [UNNotificationSound defaultSound];
     content.userInfo = userInfo;
-    UNTimeIntervalNotificationTrigger</em> trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.1f repeats:NO];
-    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@&ldquo;ReplayKitPush&rdquo; content:content trigger:trigger];<br />
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.1f repeats:NO];
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@&#34;ReplayKitPush&#34; content:content trigger:trigger];   
+    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) { 
     }];
-}
-```</li>
-<li>通知:CFNotificationCenter可以发送跨进程的通知,用来做一些实时事件交互.
-<code>
-CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(),kDarvinNotificationNamePushStart,NULL,nil,YES);
-CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), onDarwinReplayKitPushStart, kDarvinNotificationNamePushStart, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
-</code></li>
-<li>AppGroup:开启AppGroup后,同一AppGroup的成员,可以共享沙盒数据,也就是说,App可以读取&rdquo;Upload&rdquo;的录屏文件,&ldquo;Upload&rdquo;可以从App获取必要信息.AppGroup需要在 Capabilities -&gt; AppGroup 中开启,App和插件都要打开,后会生成.entitlements文件,会有一个group.BundleIdentifier的标识.
-<code>
-NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupId];// 共享的沙盒路径
-NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroupId];// 共享的userDefault
-</code></li>
+}</pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>通知:CFNotificationCenter可以发送跨进程的通知,用来做一些实时事件交互.</li>
 </ul>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(),kDarvinNotificationNamePushStart,NULL,nil,YES);
+CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), (__bridge const void *)(self), onDarwinReplayKitPushStart, kDarvinNotificationNamePushStart, NULL, CFNotificationSuspensionBehaviorDeliverImmediately);</pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>AppGroup:开启AppGroup后,同一AppGroup的成员,可以共享沙盒数据,也就是说,App可以读取&rdquo;Upload&rdquo;的录屏文件,&ldquo;Upload&rdquo;可以从App获取必要信息.AppGroup需要在 Capabilities -&gt; AppGroup 中开启,App和插件都要打开,后会生成.entitlements文件,会有一个group.BundleIdentifier的标识.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupId];// 共享的沙盒路径
+NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroupId];// 共享的userDefault</pre></td></tr></table>
+</div>
+</div>
 <h3 id="注意线程问题">注意线程问题</h3>
 
 <p>&ldquo;Upload&rdquo;中开始各种方法被调用的线程都不是主线程,所以要注意线程同步问题,并且实测如果强行回调到主线做一些耗时操作,会使&rdquo;Upload&rdquo;崩溃,所以非不得已(&ldquo;Upload&rdquo;也没有需要处理的UI事件),尽量使用当前线程,并且在开始和结束的方法中加同步锁.
@@ -570,10 +602,13 @@ NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroup
 
 <h2 id="参考链接">参考链接</h2>
 
-<p><a href="https://developer.apple.com/videos/play/wwdc2018/601/">Live Screen Broadcast with ReplayKit</a>
-<a href="https://developer.apple.com/videos/play/wwdc2017/606">What&rsquo;s New with Screen Recording and Live Broadcast</a>
-<a href="https://cloud.tencent.com/document/product/454/7883">腾讯云ReplayKit文档</a>
-<a href="https://help.aliyun.com/document_detail/45263.html?spm=a2c4g.11186623.6.808.1b50592cSXAs1a">阿里云推流SDK文档</a></p>
+<p><a href="https://developer.apple.com/videos/play/wwdc2018/601/">Live Screen Broadcast with ReplayKit</a></p>
+
+<p><a href="https://developer.apple.com/videos/play/wwdc2017/606">What&rsquo;s New with Screen Recording and Live Broadcast</a></p>
+
+<p><a href="https://cloud.tencent.com/document/product/454/7883">腾讯云ReplayKit文档</a></p>
+
+<p><a href="https://help.aliyun.com/document_detail/45263.html?spm=a2c4g.11186623.6.808.1b50592cSXAs1a">阿里云推流SDK文档</a></p>
 
     </div>
 
