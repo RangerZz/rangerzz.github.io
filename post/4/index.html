@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>iOS常见权限授权 - Ranger&#39;s blog</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Ranger" />
+  <meta name="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm" />
+
+  <meta name="keywords" content="ReplayKit 2录屏直播, ReplayKit, iOS, 录屏, Ranger" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.47" />
+
+
+<link rel="canonical" href="https://rangerzz.github.io/post/4/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="iOS常见权限授权" />
+<meta property="og:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rangerzz.github.io/post/4/" /><meta property="article:published_time" content="2018-12-19T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-12-19T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="iOS常见权限授权">
+<meta itemprop="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm">
+
+
+<meta itemprop="datePublished" content="2018-12-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1122">
+
+
+
+<meta itemprop="keywords" content="授权,iOS," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="iOS常见权限授权"/>
+<meta name="twitter:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ranger&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/about/">About</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Ranger's blog
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/about/">About</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">iOS常见权限授权</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-12-19 </span>
+        <div class="post-category">
+            <a href="https://rangerzz.github.io/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1122 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#权限状态-authorizationstatus">权限状态 AuthorizationStatus</a></li>
+<li><a href="#相册权限">相册权限</a></li>
+<li><a href="#相机-麦克风权限">相机 麦克风权限</a></li>
+<li><a href="#推送">推送</a></li>
+<li><a href="#日历">日历</a></li>
+<li><a href="#联系人">联系人</a></li>
+<li><a href="#定位">定位</a></li>
+<li><a href="#zrautorizationmanager">ZRAutorizationManager</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="权限状态-authorizationstatus">权限状态 AuthorizationStatus</h2>
+
+<p>权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下:
+* <code>AuthorizationStatusNotDetermined</code>代表还未向用户进行过询问授权,一般为应用新装或第一次请求对应权限.此时可以主动向用户请求授权.
+* <code>AuthorizationStatusRestricted</code>代表对应权限被拒绝,并且用户无权改变权限状态,例如文档中举例家长控制这种情况.因此当做未授权的情况处理处理.
+* <code>AuthorizationStatusDenied</code>代表被用户拒绝.此时可以提醒用户该权限无法访问,需要去设置中打开.
+* <code>AuthorizationStatusAuthorized</code>代表已经获取对应权限.此时可以访问相关数据和使用相关功能.</p>
+
+<h2 id="相册权限">相册权限</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">// 导入框架
+#import &lt;Photos/Photos.h&gt;
+
+// 当前授权状态 
+// status就对应上面提到的枚举以及对应含义
+PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+
+// 主动请求授权
+if (status == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                // 已授权 可以访问相册等操作
+            }
+            else {
+                // 未授权 提示用户
+            }
+        }];
+    }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="相机-麦克风权限">相机 麦克风权限</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#import &lt;AVFoundation/AVFoundation.h&gt;
+
+// AVMediaTypeVideo 相机权限
+// AVMediaTypeAudio 麦克风权限
+
+// 当前授权状态
+AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+
+// 主动请求授权
+if (status == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            // granted == YES 已授权
+        }];
+    }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="推送">推送</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#import &lt;UserNotifications/UserNotifications.h&gt;
+
+// 获取当前授权状态
+[[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        // 当前授权状态
+        UNAuthorizationStatus unStatus = settings.authorizationStatus;
+        
+        if (unStatus == UNAuthorizationStatusAuthorized) {
+            // 已授权
+        }
+        else {
+        // 请求授权
+            [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionAlert | UNAuthorizationOptionSound |UNAuthorizationOptionBadge completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                // granted == YES 已授权
+            }];
+        }
+    }];</pre></td></tr></table>
+</div>
+</div>
+<h2 id="日历">日历</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#import &lt;EventKit/EventKit.h&gt;
+
+// 当前授权状态 
+//EKEntityTypeEvent日历 EKEntityTypeReminder提醒事项
+EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    
+// 未询问
+    if (status == EKAuthorizationStatusNotDetermined) {
+    // 请求授权
+        [[[EKEventStore alloc] init] requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError * _Nullable error) {
+            // granted == YES 已授权
+        }];
+    }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="联系人">联系人</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#import &lt;Contacts/Contacts.h&gt;
+
+// 当前授权状态
+CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+// 未询问
+    if (status == CNAuthorizationStatusNotDetermined) {
+    // 请求授权
+        [[[CNContactStore alloc] init] requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            // granted == YES 已授权
+        }];
+    }</pre></td></tr></table>
+</div>
+</div>
+<h2 id="定位">定位</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#import &lt;CoreLocation/CoreLocation.h&gt;
+
+// 需要引用 CLLocationManager
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+// 获取授权状态
+CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    // 未授权
+    if (status == kCLAuthorizationStatusNotDetermined) {
+    // 请求一直定位
+        [self.locationManager requestAlwaysAuthorization];
+    // 请求使用时定位
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+
+// CLLocationManagerDelegate
+// 定位权限变化的回调方法
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="zrautorizationmanager">ZRAutorizationManager</h2>
+
+<p>封装了以上所有权限的状态和授权,统一API,一行代码获取状态和请求授权.并且系统API的授权请求结果回调线程一般不是主线程,使用<strong>ZRAutorizationManager</strong>,可以在系统API线程或在<strong>主线程回调授权结果</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">// 一个枚举统一处理授权状态
+typedef NS_ENUM(NSUInteger, ZRAutorizationStatus) {
+    ZRAutorizationStatusNotDetermined,// 用户还未选择是否允许授权 可以代表第一次询问
+    ZRAutorizationStatusDenied,// 拒绝授权 包括 Restricted &amp; Denied
+    ZRAutorizationStatusAuthorized,// 已授权
+    
+    ZRAutorizationStatusUnknow,// 未知状态
+};
+
+// 获取授权状态
++ (ZRAutorizationStatus)autorizationStatusForType:(ZRAutorizationType)type;
+
+// 请求授权后结果的回调是系统API回调的线程,一般不是主线程
++ (void)requestAuthorization:(ZRAutorizationType)type grantedBlock:(void (^)(BOOL granted))grantedBlock;
+
+// 请求授权后结果的回调是主线程
++ (void)requestAuthorization:(ZRAutorizationType)type grantedBlock:(void (^)(BOOL granted))grantedBlock;</pre></td></tr></table>
+</div>
+</div>
+<p><a href="https://github.com/RangerZz/ZRAutorizationManager">下载查看github</a></p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Ranger</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-12-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://rangerzz.github.io/tags/%E6%8E%88%E6%9D%83/">授权</a>
+          <a href="https://rangerzz.github.io/tags/ios/">iOS</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/3/">
+            <span class="next-text nav-default">ReplayKit 2录屏直播</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: '4.md',
+        title: 'iOS常见权限授权',
+        link: decodeURI(location.href),
+        desc: '权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀\x2b固定描述拼接,大致如下: * AuthorizationStatusNotDeterm',
+        owner: 'RangerZz',
+        repo: 'blogs',
+        oauth: {
+          client_id: '20250875bfb11ca77898',
+          client_secret: '1cd22a9259764939736a7eb14046e7e2ce749172'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangranger@hotmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+      <a href="https://github.com/RangerZz" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+  <a href="https://rangerzz.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        Ranger
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

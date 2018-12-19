@@ -25,10 +25,10 @@
     
     <item>
       <title>iOS常见权限授权</title>
-      <link>https://rangerzz.github.io/post/ios%E5%B8%B8%E8%A7%81%E6%9D%83%E9%99%90%E6%8E%88%E6%9D%83/</link>
+      <link>https://rangerzz.github.io/post/4/</link>
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rangerzz.github.io/post/ios%E5%B8%B8%E8%A7%81%E6%9D%83%E9%99%90%E6%8E%88%E6%9D%83/</guid>
+      <guid>https://rangerzz.github.io/post/4/</guid>
       
         <description>
 
@@ -318,10 +318,10 @@ typedef NS_ENUM(NSUInteger, ZRAutorizationStatus) {
     
     <item>
       <title>ReplayKit 2录屏直播</title>
-      <link>https://rangerzz.github.io/post/replaykit-2%E5%BD%95%E5%B1%8F%E7%9B%B4%E6%92%AD/</link>
+      <link>https://rangerzz.github.io/post/3/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rangerzz.github.io/post/replaykit-2%E5%BD%95%E5%B1%8F%E7%9B%B4%E6%92%AD/</guid>
+      <guid>https://rangerzz.github.io/post/3/</guid>
       
         <description>
 
@@ -603,10 +603,10 @@ NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroup
     
     <item>
       <title>YYCache 源码收获</title>
-      <link>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</link>
+      <link>https://rangerzz.github.io/post/2/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</guid>
+      <guid>https://rangerzz.github.io/post/2/</guid>
       
         <description>
 
@@ -651,10 +651,10 @@ NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroup
     
     <item>
       <title>第一篇博文</title>
-      <link>https://rangerzz.github.io/post/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</link>
+      <link>https://rangerzz.github.io/post/1/</link>
       <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rangerzz.github.io/post/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</guid>
+      <guid>https://rangerzz.github.io/post/1/</guid>
       
         <description>&lt;p&gt;本站部署在github.io，基于Hugo建站，使用了Jane主题。&lt;/p&gt;
 

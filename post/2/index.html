@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>YYCache 源码收获 - Ranger&#39;s blog</title>
+  
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="author" content="Ranger" />
+  <meta name="description" content="YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S" />
+
+  <meta name="keywords" content="ReplayKit 2录屏直播, ReplayKit, iOS, 录屏, Ranger" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.47" />
+
+
+<link rel="canonical" href="https://rangerzz.github.io/post/2/" />
+
+
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+<link href="/dist/jane.min.css?v=2.7.0" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="YYCache 源码收获" />
+<meta property="og:description" content="YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rangerzz.github.io/post/2/" /><meta property="article:published_time" content="2018-08-29T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-08-29T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="YYCache 源码收获">
+<meta itemprop="description" content="YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S">
+
+
+<meta itemprop="datePublished" content="2018-08-29T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-08-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="810">
+
+
+
+<meta itemprop="keywords" content="源码,YYKit,感悟," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="YYCache 源码收获"/>
+<meta name="twitter:description" content="YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Ranger&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/">Home</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/post/">Archives</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/tags/">Tags</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/categories/">Categories</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/about/">About</a>
+          
+        
+      </li>
+    
+  </ul>
+</nav>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      Ranger's blog
+    
+  </a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/">Home</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/post/">Archives</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/tags/">Tags</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/categories/">Categories</a>
+          
+
+        
+
+      </li>
+    
+      <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://rangerzz.github.io/about/">About</a>
+          
+
+        
+
+      </li>
+    
+    
+  </ul>
+</nav>
+
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
+      <div class="content-wrapper">
+        <div id="content" class="content container">
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">YYCache 源码收获</h1>
+      
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-29 </span>
+        <div class="post-category">
+            <a href="https://rangerzz.github.io/categories/%E6%BA%90%E7%A0%81/"> 源码 </a>
+            
+          </div>
+        <span class="more-meta"> 约 810 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+
+        
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#yycache-源码收获">YYCache 源码收获</a>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#收获">收获</a></li>
+<li><a href="#感悟">感悟</a></li>
+<li><a href="#扩展阅读">扩展阅读</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="yycache-源码收获">YYCache 源码收获</h1>
+
+<h2 id="简介">简介</h2>
+
+<p>YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过SQLite和文件存储实现高性能存取.</p>
+
+<h2 id="收获">收获</h2>
+
+<ul>
+<li>双向链表(_YYLinkedMap, _YYLinkedMapNode)数据结构的实现和LRU(least-recently-used)缓存淘汰算法的实现.从而衍生的使我明晰了算法复杂度的两个维度,即时间复杂度和空间复杂度的内涵,更对Hash算法产生了浓厚兴趣.</li>
+<li>YYCache的接口都是线程安全的,其中YYMemoryCache通过pthread_mutex(互斥锁)在进行读取操作时加锁解锁来保证线程安全,YYDiskCache通过dispatch_semaphore(信号量)来保证线程安全.从而衍生的使我了解更多关于锁的概念与应用.</li>
+<li>更底层同时也更高效的CFMutableDictionaryRef的API及使用.</li>
+<li>SQLite的简单使用,未来结合阅读FMDB源码应该收获更多.</li>
+<li>开发者的设计思路与编程技巧.</li>
+</ul>
+
+<h2 id="感悟">感悟</h2>
+
+<p>工作4年,忙忙碌碌,更多的是在用轮子造应用,伴随着公司的策略,上线运营和放弃运营的应用也写了十多款,工作前两年,写各种类型的应用确实扩宽了知识的广度,但很是缺乏知识的深度,尤其近一年来感觉到深深地技术瓶颈,日常工作更多的是重复之前写过的很多代码,用相同的技术知识点来不同的排列组合.</p>
+
+<p>随着困惑的加深,自学提高迫在眉睫,期间购入了很多书籍,也开始阅读优秀开源项目的源码,讲真,就我近期阅读源码的收获,阅读源码真的是提高自我的有效方式,代码应该是开发者沟通最有效的方式,而阅读源码则会让你产生优秀开发者心灵交流的感觉.</p>
+
+<p>未来我想我会继续阅读更多的优秀源码和书籍,并记录下收获.</p>
+
+<h2 id="扩展阅读">扩展阅读</h2>
+
+<p><a href="https://knightsj.github.io/2018/02/03/YYCache%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">YYCache 源码解析</a></p>
+
+<p><a href="https://www.jianshu.com/p/8b8a01dd6356">iOS 开发中的八种锁（Lock）</a></p>
+
+<p><a href="http://yulingtianxia.com/blog/2015/11/01/More-than-you-want-to-know-about-synchronized/">关于 @synchronized，这儿比你想知道的还要多</a></p>
+
+<p><a href="https://www.jianshu.com/p/2dc347464188">正确使用多线程同步锁@synchronized()</a></p>
+
+<p><a href="https://blog.ibireme.com/2016/01/16/spinlock_is_unsafe_in_ios/">不再安全的 OSSpinLock</a></p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Ranger</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-08-29</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://rangerzz.github.io/tags/%E6%BA%90%E7%A0%81/">源码</a>
+          <a href="https://rangerzz.github.io/tags/yykit/">YYKit</a>
+          <a href="https://rangerzz.github.io/tags/%E6%84%9F%E6%82%9F/">感悟</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/3/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">ReplayKit 2录屏直播</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/1/">
+            <span class="next-text nav-default">第一篇博文</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+
+  
+  
+
+  
+  
+
+  
+
+  <div class="post bg-white">
+      <div id="comments-gitment"></div>
+      <link rel="stylesheet" href="/lib/gitment/gitment-0.0.3.min.css">
+        <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
+      <script type="text/javascript">
+      const gitment = new Gitment({
+        id: '2.md',
+        title: 'YYCache 源码收获',
+        link: decodeURI(location.href),
+        desc: 'YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S',
+        owner: 'RangerZz',
+        repo: 'blogs',
+        oauth: {
+          client_id: '20250875bfb11ca77898',
+          client_secret: '1cd22a9259764939736a7eb14046e7e2ce749172'
+        }
+      })
+      gitment.render('comments-gitment')
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://github.com/imsun/gitment">comments powered by gitment.</a></noscript>
+    </div>
+
+  
+
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zhangranger@hotmail.com" rel="me noopener" class="iconfont icon-email"
+        title="email" target="_blank">
+      </a>
+      <a href="https://github.com/RangerZz" rel="me noopener" class="iconfont icon-github"
+        title="github" target="_blank">
+      </a>
+  <a href="https://rangerzz.github.io/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="iconfont icon-rss"
+    title="rss" target="_blank">
+  </a>
+  </div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span><span class="author">
+        Ranger
+        
+      </span></span>
+
+  
+  
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+<script type="text/javascript" src="/dist/jane.min.js?v=2.7.0"></script>
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

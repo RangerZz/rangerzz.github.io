@@ -13,10 +13,10 @@
     
     <item>
       <title>YYCache 源码收获</title>
-      <link>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</link>
+      <link>https://rangerzz.github.io/post/2/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://rangerzz.github.io/post/yycache-%E6%BA%90%E7%A0%81%E6%94%B6%E8%8E%B7/</guid>
+      <guid>https://rangerzz.github.io/post/2/</guid>
       <description>YYCache 源码收获 简介 YYCache是一个高性能的线程安全的缓存框架,分为内存缓存和磁盘缓存两部分,内存缓存通过双向链表实现高速存取,磁盘缓存通过S</description>
     </item>
     
