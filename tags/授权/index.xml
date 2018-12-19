@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>授权 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/tags/%E6%8E%88%E6%9D%83/</link>
+    <description>Recent content in 授权 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/tags/%E6%8E%88%E6%9D%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iOS常见权限授权</title>
+      <link>https://rangerzz.github.io/post/ios%E5%B8%B8%E8%A7%81%E6%9D%83%E9%99%90%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/ios%E5%B8%B8%E8%A7%81%E6%9D%83%E9%99%90%E6%8E%88%E6%9D%83/</guid>
+      <description>权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下: * AuthorizationStatusNotDeterm</description>
+    </item>
+    
+  </channel>
+</rss>
