@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思考 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/tags/%E6%80%9D%E8%80%83/</link>
+    <description>Recent content in 思考 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 25 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/tags/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2018年工作总结和思考</title>
+      <link>https://rangerzz.github.io/post/5/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/5/</guid>
+      <description>总结 今年春节后跳出了之前的工作内容,不再是重复性的一直做类似的事情.接手了一个新项目,并且独自负责iOS端的开发,期间陆续迭代调整方向持续到</description>
+    </item>
+    
+  </channel>
+</rss>
