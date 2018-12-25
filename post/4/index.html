@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ranger" />
-  <meta name="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm" />
+  <meta name="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: AuthorizationStatusNotDetermi" />
 
   <meta name="keywords" content="权限, ReplayKit, iOS, 录屏, Ranger" />
 
@@ -58,24 +58,24 @@
 
 
 <meta property="og:title" content="iOS常见权限授权" />
-<meta property="og:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm" />
+<meta property="og:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: AuthorizationStatusNotDetermi" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rangerzz.github.io/post/4/" /><meta property="article:published_time" content="2018-12-19T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2018-12-19T00:00:00&#43;00:00"/>
 <meta itemprop="name" content="iOS常见权限授权">
-<meta itemprop="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm">
+<meta itemprop="description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: AuthorizationStatusNotDetermi">
 
 
 <meta itemprop="datePublished" content="2018-12-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1119">
+<meta itemprop="wordCount" content="1118">
 
 
 
 <meta itemprop="keywords" content="授权,开源,iOS,总结," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="iOS常见权限授权"/>
-<meta name="twitter:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: * AuthorizationStatusNotDeterm"/>
+<meta name="twitter:description" content="权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀&#43;固定描述拼接,大致如下: AuthorizationStatusNotDetermi"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -294,7 +294,7 @@
             <a href="https://rangerzz.github.io/categories/ios/"> iOS </a>
             
           </div>
-        <span class="more-meta"> 约 1119 字 </span>
+        <span class="more-meta"> 约 1118 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
@@ -334,10 +334,11 @@
 
 <h2 id="权限状态-authorizationstatus">权限状态 AuthorizationStatus</h2>
 
-<p>权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下:
-* <code>AuthorizationStatusNotDetermined</code>代表还未向用户进行过询问授权,一般为应用新装或第一次请求对应权限.此时可以主动向用户请求授权.</p>
+<p>权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下:</p>
 
 <ul>
+<li><p><code>AuthorizationStatusNotDetermined</code>代表还未向用户进行过询问授权,一般为应用新装或第一次请求对应权限.此时可以主动向用户请求授权.</p></li>
+
 <li><p><code>AuthorizationStatusRestricted</code>代表对应权限被拒绝,并且用户无权改变权限状态,例如文档中举例家长控制这种情况.因此当做未授权的情况处理处理.</p></li>
 
 <li><p><code>AuthorizationStatusDenied</code>代表被用户拒绝.此时可以提醒用户该权限无法访问,需要去设置中打开.</p></li>
@@ -680,7 +681,7 @@ typedef NS_ENUM(NSUInteger, ZRAutorizationStatus) {
         id: '4.md',
         title: 'iOS常见权限授权',
         link: decodeURI(location.href),
-        desc: '权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀\x2b固定描述拼接,大致如下: * AuthorizationStatusNotDeterm',
+        desc: '权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀\x2b固定描述拼接,大致如下: AuthorizationStatusNotDetermi',
         owner: 'RangerZz',
         repo: 'blogs',
         oauth: {

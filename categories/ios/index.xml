@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://rangerzz.github.io/post/4/</guid>
-      <description>权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下: * AuthorizationStatusNotDeterm</description>
+      <description>权限状态 AuthorizationStatus 权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下: AuthorizationStatusNotDetermi</description>
     </item>
     
     <item>
