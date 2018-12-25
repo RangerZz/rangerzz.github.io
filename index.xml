@@ -35,10 +35,15 @@
 &lt;h2 id=&#34;权限状态-authorizationstatus&#34;&gt;权限状态 AuthorizationStatus&lt;/h2&gt;
 
 &lt;p&gt;权限状态枚举,API比较统一,都是相关框架前缀+固定描述拼接,大致如下:
-* &lt;code&gt;AuthorizationStatusNotDetermined&lt;/code&gt;代表还未向用户进行过询问授权,一般为应用新装或第一次请求对应权限.此时可以主动向用户请求授权.
-* &lt;code&gt;AuthorizationStatusRestricted&lt;/code&gt;代表对应权限被拒绝,并且用户无权改变权限状态,例如文档中举例家长控制这种情况.因此当做未授权的情况处理处理.
-* &lt;code&gt;AuthorizationStatusDenied&lt;/code&gt;代表被用户拒绝.此时可以提醒用户该权限无法访问,需要去设置中打开.
-* &lt;code&gt;AuthorizationStatusAuthorized&lt;/code&gt;代表已经获取对应权限.此时可以访问相关数据和使用相关功能.&lt;/p&gt;
+* &lt;code&gt;AuthorizationStatusNotDetermined&lt;/code&gt;代表还未向用户进行过询问授权,一般为应用新装或第一次请求对应权限.此时可以主动向用户请求授权.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;AuthorizationStatusRestricted&lt;/code&gt;代表对应权限被拒绝,并且用户无权改变权限状态,例如文档中举例家长控制这种情况.因此当做未授权的情况处理处理.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;AuthorizationStatusDenied&lt;/code&gt;代表被用户拒绝.此时可以提醒用户该权限无法访问,需要去设置中打开.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;AuthorizationStatusAuthorized&lt;/code&gt;代表已经获取对应权限.此时可以访问相关数据和使用相关功能.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;相册权限&#34;&gt;相册权限&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
