@@ -626,7 +626,7 @@ NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:AppGroup
 &lt;li&gt;开发者的设计思路与编程技巧.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;感悟&#34;&gt;感悟&lt;/h2&gt;
+&lt;h2 id=&#34;思考&#34;&gt;思考&lt;/h2&gt;
 
 &lt;p&gt;工作4年,忙忙碌碌,更多的是在用轮子造应用,伴随着公司的策略,上线运营和放弃运营的应用也写了十多款,工作前两年,写各种类型的应用确实扩宽了知识的广度,但很是缺乏知识的深度,尤其近一年来感觉到深深地技术瓶颈,日常工作更多的是重复之前写过的很多代码,用相同的技术知识点来不同的排列组合.&lt;/p&gt;
 

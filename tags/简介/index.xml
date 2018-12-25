@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>简介 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/tags/%E7%AE%80%E4%BB%8B/</link>
+    <description>Recent content in 简介 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/tags/%E7%AE%80%E4%BB%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ReplayKit 2录屏直播</title>
+      <link>https://rangerzz.github.io/post/3/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/3/</guid>
+      <description>概览 iOS 11新添加了用户从控制中心开启全局的录屏功能(在此之前只能实现应用内录制),这个功能和API(ReplayKit 2)的添加,使得录屏直</description>
+    </item>
+    
+    <item>
+      <title>第一篇博文</title>
+      <link>https://rangerzz.github.io/post/1/</link>
+      <pubDate>Tue, 21 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/1/</guid>
+      <description>本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考</description>
+    </item>
+    
+  </channel>
+</rss>
