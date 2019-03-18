@@ -68,7 +68,7 @@
 
 <meta itemprop="datePublished" content="2019-03-15T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-03-15T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="754">
+<meta itemprop="wordCount" content="731">
 
 
 
@@ -293,7 +293,7 @@
         <div class="post-category">
             
           </div>
-        <span class="more-meta"> 约 754 字 </span>
+        <span class="more-meta"> 约 731 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -343,9 +343,11 @@
 
 <h2 id="修饰符">修饰符</h2>
 
-<p><code>i</code>:忽略大小写
-<code>g</code>:全局匹配
-<code>m</code>:多行匹配</p>
+<p><code>i</code>:忽略大小写</p>
+
+<p><code>g</code>:全局匹配</p>
+
+<p><code>m</code>:多行匹配</p>
 
 <h2 id="元字符">元字符</h2>
 
@@ -356,46 +358,64 @@
 
 <p><code>.</code>:点字符匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
 <em>注意，对于码点大于0xFFFF的 Unicode 字符，点字符不能正确匹配，会认为这是两个字符。</em>
-<code>|</code>:或关系
-<code>[a-z]</code>:表示26个小写字母任意一个都可以匹配
-<code>[0-9]</code>:表示数字0-9任意一个数字可以匹配
-<code>[a-zA-Z0-9]</code>:表示大小写a-z0-9任意一个可以匹配
-<code>[^0-9]</code>:表示非0-9的任意一个字符可以匹配</p>
+<code>|</code>:或关系</p>
+
+<p><code>[a-z]</code>:表示26个小写字母任意一个都可以匹配</p>
+
+<p><code>[0-9]</code>:表示数字0-9任意一个数字可以匹配</p>
+
+<p><code>[a-zA-Z0-9]</code>:表示大小写a-z0-9任意一个可以匹配</p>
+
+<p><code>[^0-9]</code>:表示非0-9的任意一个字符可以匹配</p>
 
 <h3 id="特殊字符">特殊字符</h3>
 
-<p><code>\w</code>:匹配字母数字下划线_ ,相当于<code>[a-zA-Z0-9_]</code>
-<code>\W</code>:匹配非字母数字下划线_ ,相当于<code>[^a-zA-Z0-9_]</code>
-<code>\d</code>:匹配数字,相当于<code>[0-9]</code>
-<code>\D</code>:匹配数字,相当于<code>[^0-9]</code>
-<code>\s</code>:匹配空格（包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]。
-<code>\S</code>:匹配非空格的字符，相当于[^ \t\r\n\v\f]。</p>
+<p><code>\w</code>:匹配字母数字下划线_ ,相当于<code>[a-zA-Z0-9_]</code></p>
+
+<p><code>\W</code>:匹配非字母数字下划线_ ,相当于<code>[^a-zA-Z0-9_]</code></p>
+
+<p><code>\d</code>:匹配数字,相当于<code>[0-9]</code></p>
+
+<p><code>\D</code>:匹配数字,相当于<code>[^0-9]</code></p>
+
+<p><code>\s</code>:匹配空格（包括换行符、制表符、空格符等,相等于[ \t\r\n\v\f]</p>
+
+<p><code>\S</code>:匹配非空格的字符，相当于[^ \t\r\n\v\f]</p>
 
 <h3 id="重复字符">重复字符</h3>
 
-<p><code>{m,n}</code>:匹配m-n个,包含m,n
-<code>{m}</code>:匹配m个,限定m个
-<code>{m,}</code>:匹配m个或m个以上</p>
+<p><code>{m,n}</code>:匹配m-n个,包含m,n</p>
+
+<p><code>{m}</code>:匹配m个,限定m个</p>
+
+<p><code>{m,}</code>:匹配m个或m个以上</p>
 
 <h3 id="量词">量词</h3>
 
-<p><code>*</code>:匹配0个,1个或多个
-<code>+</code>:匹配1个或者多个
-<code>?</code>:匹配0个或者1个
+<p><code>*</code>:匹配0个,1个或多个</p>
+
+<p><code>+</code>:匹配1个或者多个</p>
+
+<p><code>?</code>:匹配0个或者1个
 <strong>非贪婪模式:量词符后加<code>?</code></strong></p>
 
 <h3 id="位置字符">位置字符</h3>
 
-<p><code>/^[0-9]/</code>:<code>/^</code>以0-9开始的任意一个数字可以匹配
-<code>/[a-z]$/</code>:<code>$/</code>以a-z任意小写字母结尾的可以匹配</p>
+<p><code>/^[0-9]/</code>:<code>/^</code>以0-9开始的任意一个数字可以匹配</p>
+
+<p><code>/[a-z]$/</code>:<code>$/</code>以a-z任意小写字母结尾的可以匹配</p>
 
 <h3 id="分组">分组</h3>
 
-<p><code>()</code>:分组
-<code>(?:[a-z])</code>:非捕获性分组
-<code>(a?(b?))</code>:嵌套分组,从外向内获取
-<code>m(?=n)</code>:先行断言匹配,m只有在n前面才匹配
-<code>m(?!n)</code>:先行否定断言匹配,m只有不在n前面才匹配</p>
+<p><code>()</code>:分组</p>
+
+<p><code>(?:[a-z])</code>:非捕获性分组</p>
+
+<p><code>(a?(b?))</code>:嵌套分组,从外向内获取</p>
+
+<p><code>m(?=n)</code>:先行断言匹配,m只有在n前面才匹配</p>
+
+<p><code>m(?!n)</code>:先行否定断言匹配,m只有不在n前面才匹配</p>
 
     </div>
 
