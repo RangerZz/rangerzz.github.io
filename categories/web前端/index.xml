@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web前端 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/categories/web%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in Web前端 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/categories/web%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>正则表达式</title>
+      <link>https://rangerzz.github.io/post/6/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/6/</guid>
+      <description>JS中正则表达式两种创建方式: 字面量: let reg = /abc/ RegExp构造函数: let reg = new RegExp(&#39;abc&#39;) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在</description>
+    </item>
+    
+  </channel>
+</rss>

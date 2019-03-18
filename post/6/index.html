@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>第一篇博文 - Ranger&#39;s blog</title>
+  <title>正则表达式 - Ranger&#39;s blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ranger" />
-  <meta name="description" content="本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考" />
+  <meta name="description" content="JS中正则表达式两种创建方式: 字面量: let reg = /abc/ RegExp构造函数: let reg = new RegExp(&#39;abc&#39;) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在" />
 
   <meta name="keywords" content="权限, ReplayKit, iOS, 录屏, Ranger" />
 
@@ -37,7 +37,7 @@
 <meta name="generator" content="Hugo 0.47" />
 
 
-<link rel="canonical" href="https://rangerzz.github.io/post/1/" />
+<link rel="canonical" href="https://rangerzz.github.io/post/6/" />
 
 
 
@@ -57,25 +57,25 @@
 
 
 
-<meta property="og:title" content="第一篇博文" />
-<meta property="og:description" content="本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考" />
+<meta property="og:title" content="正则表达式" />
+<meta property="og:description" content="JS中正则表达式两种创建方式: 字面量: let reg = /abc/ RegExp构造函数: let reg = new RegExp(&#39;abc&#39;) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rangerzz.github.io/post/1/" /><meta property="article:published_time" content="2018-08-21T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2018-08-21T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="第一篇博文">
-<meta itemprop="description" content="本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考">
+<meta property="og:url" content="https://rangerzz.github.io/post/6/" /><meta property="article:published_time" content="2019-03-15T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-03-15T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="正则表达式">
+<meta itemprop="description" content="JS中正则表达式两种创建方式: 字面量: let reg = /abc/ RegExp构造函数: let reg = new RegExp(&#39;abc&#39;) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在">
 
 
-<meta itemprop="datePublished" content="2018-08-21T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-08-21T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="63">
+<meta itemprop="datePublished" content="2019-03-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="754">
 
 
 
-<meta itemprop="keywords" content="建站,关于,简介," />
+<meta itemprop="keywords" content="正则表达式,JavaScript,Web前端," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="第一篇博文"/>
-<meta name="twitter:description" content="本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考"/>
+<meta name="twitter:title" content="正则表达式"/>
+<meta name="twitter:description" content="JS中正则表达式两种创建方式: 字面量: let reg = /abc/ RegExp构造函数: let reg = new RegExp(&#39;abc&#39;) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -286,16 +286,15 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">第一篇博文</h1>
+      <h1 class="post-title">正则表达式</h1>
       
       <div class="post-meta">
-        <span class="post-time"> 2018-08-21 </span>
+        <span class="post-time"> 2019-03-15 </span>
         <div class="post-category">
-            <a href="https://rangerzz.github.io/categories/%E5%85%B3%E4%BA%8E/"> 关于 </a>
             
           </div>
-        <span class="more-meta"> 约 63 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 754 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -310,19 +309,93 @@
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#js中正则表达式两种创建方式">JS中正则表达式两种创建方式:</a></li>
+<li><a href="#修饰符">修饰符</a></li>
+<li><a href="#元字符">元字符</a>
+<ul>
+<li><a href="#字符类">字符类</a></li>
+<li><a href="#特殊字符">特殊字符</a></li>
+<li><a href="#重复字符">重复字符</a></li>
+<li><a href="#量词">量词</a></li>
+<li><a href="#位置字符">位置字符</a></li>
+<li><a href="#分组">分组</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
 
     
     <div class="post-content">
-      <p>本站部署在github.io，基于Hugo建站，使用了Jane主题。</p>
+      
 
-<p><a href="https://keysaim.github.io/post/blog/2017-08-15-how-to-setup-your-github-io-blog/">github.io部署参考</a></p>
+<h2 id="js中正则表达式两种创建方式">JS中正则表达式两种创建方式:</h2>
 
-<p><a href="https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/">Hugo建站参考</a></p>
+<ol>
+<li>字面量: <code>let reg = /abc/</code></li>
+<li>RegExp构造函数: <code>let reg = new RegExp('abc')</code></li>
+</ol>
 
-<p><a href="https://themes.gohugo.io/hugo-theme-jane/">Jane主题参考</a></p>
+<h2 id="修饰符">修饰符</h2>
+
+<p><code>i</code>:忽略大小写
+<code>g</code>:全局匹配
+<code>m</code>:多行匹配</p>
+
+<h2 id="元字符">元字符</h2>
+
+<p>大多数字符在正则表达式中只是是字面意思如/a/匹配a,这类字符叫做<strong>字面量字符</strong>
+除了字面量字符,还有一部分特殊字符,不代表其字面意思,叫做<strong>元字符</strong></p>
+
+<h3 id="字符类">字符类</h3>
+
+<p><code>.</code>:点字符匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
+<em>注意，对于码点大于0xFFFF的 Unicode 字符，点字符不能正确匹配，会认为这是两个字符。</em>
+<code>|</code>:或关系
+<code>[a-z]</code>:表示26个小写字母任意一个都可以匹配
+<code>[0-9]</code>:表示数字0-9任意一个数字可以匹配
+<code>[a-zA-Z0-9]</code>:表示大小写a-z0-9任意一个可以匹配
+<code>[^0-9]</code>:表示非0-9的任意一个字符可以匹配</p>
+
+<h3 id="特殊字符">特殊字符</h3>
+
+<p><code>\w</code>:匹配字母数字下划线_ ,相当于<code>[a-zA-Z0-9_]</code>
+<code>\W</code>:匹配非字母数字下划线_ ,相当于<code>[^a-zA-Z0-9_]</code>
+<code>\d</code>:匹配数字,相当于<code>[0-9]</code>
+<code>\D</code>:匹配数字,相当于<code>[^0-9]</code>
+<code>\s</code>:匹配空格（包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]。
+<code>\S</code>:匹配非空格的字符，相当于[^ \t\r\n\v\f]。</p>
+
+<h3 id="重复字符">重复字符</h3>
+
+<p><code>{m,n}</code>:匹配m-n个,包含m,n
+<code>{m}</code>:匹配m个,限定m个
+<code>{m,}</code>:匹配m个或m个以上</p>
+
+<h3 id="量词">量词</h3>
+
+<p><code>*</code>:匹配0个,1个或多个
+<code>+</code>:匹配1个或者多个
+<code>?</code>:匹配0个或者1个
+<strong>非贪婪模式:量词符后加<code>?</code></strong></p>
+
+<h3 id="位置字符">位置字符</h3>
+
+<p><code>/^[0-9]/</code>:<code>/^</code>以0-9开始的任意一个数字可以匹配
+<code>/[a-z]$/</code>:<code>$/</code>以a-z任意小写字母结尾的可以匹配</p>
+
+<h3 id="分组">分组</h3>
+
+<p><code>()</code>:分组
+<code>(?:[a-z])</code>:非捕获性分组
+<code>(a?(b?))</code>:嵌套分组,从外向内获取
+<code>m(?=n)</code>:先行断言匹配,m只有在n前面才匹配
+<code>m(?!n)</code>:先行否定断言匹配,m只有不在n前面才匹配</p>
 
     </div>
 
@@ -335,7 +408,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-08-21</span>
+    <span class="item-content">2019-03-15</span>
   </p>
   
   <p class="copyright-item">
@@ -349,21 +422,20 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://rangerzz.github.io/tags/%E5%BB%BA%E7%AB%99/">建站</a>
-          <a href="https://rangerzz.github.io/tags/%E5%85%B3%E4%BA%8E/">关于</a>
-          <a href="https://rangerzz.github.io/tags/%E7%AE%80%E4%BB%8B/">简介</a>
+          <a href="https://rangerzz.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+          <a href="https://rangerzz.github.io/tags/javascript/">JavaScript</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/2/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">YYCache 源码收获</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
+          <a class="next" href="/post/5/">
+            <span class="next-text nav-default">2018年工作总结和思考</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
       </nav>
     </footer>
   </article>
@@ -382,10 +454,10 @@
         <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
       <script type="text/javascript">
       const gitment = new Gitment({
-        id: '1.md',
-        title: '第一篇博文',
+        id: '6.md',
+        title: '正则表达式',
         link: decodeURI(location.href),
-        desc: '本站部署在github.io，基于Hugo建站，使用了Jane主题。 github.io部署参考 Hugo建站参考 Jane主题参考',
+        desc: 'JS中正则表达式两种创建方式: 字面量: let reg = \/abc\/ RegExp构造函数: let reg = new RegExp(\x27abc\x27) 修饰符 i:忽略大小写 g:全局匹配 m:多行匹配 元字符 大多数字符在',
         owner: 'RangerZz',
         repo: 'blogs',
         oauth: {
