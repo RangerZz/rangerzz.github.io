@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>队列</title>
+      <link>https://rangerzz.github.io/post/10/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/10/</guid>
+      <description>队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:</description>
+    </item>
+    
+    <item>
       <title>线性表</title>
       <link>https://rangerzz.github.io/post/8/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>

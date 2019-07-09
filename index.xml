@@ -349,6 +349,268 @@ exp.input(expression: test)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
     </item>
     
     <item>
+      <title>队列</title>
+      <link>https://rangerzz.github.io/post/10/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/10/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;队列&#34;&gt;队列&lt;/h2&gt;
+
+&lt;h3 id=&#34;队列的抽象数据类型描述&#34;&gt;队列的抽象数据类型描述&lt;/h3&gt;
+
+&lt;p&gt;具有一定操作约束的线性表,只能在一端插入,而在另一端删除&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数据插入:入队&lt;/li&gt;
+&lt;li&gt;数据删除:出队&lt;/li&gt;
+&lt;li&gt;先进先出(FIFO)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;类型名称-队列-queue&#34;&gt;类型名称:队列(Queue)&lt;/h4&gt;
+
+&lt;h4 id=&#34;数据对象集-一个有0个或多个元素的有穷线性表&#34;&gt;数据对象集:一个有0个或多个元素的有穷线性表&lt;/h4&gt;
+
+&lt;h4 id=&#34;操作集&#34;&gt;操作集&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建空队列&lt;/li&gt;
+&lt;li&gt;判读队列是否已满&lt;/li&gt;
+&lt;li&gt;插入元素&lt;/li&gt;
+&lt;li&gt;队列是否为空&lt;/li&gt;
+&lt;li&gt;将队列头部元素删除并返回&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;队列的顺序存储实现&#34;&gt;队列的顺序存储实现&lt;/h2&gt;
+
+&lt;p&gt;队列的顺序存储结构通常由一个一维数组和一个记录队列头元素位置的变量front以及一个记录队列尾元素位置的变量rear组成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;swift的特性不适合描述一个数组实现的队列,故采用老师提供的C语音实现
+
+#define MaxSize &amp;lt;储存数据元素的最大个数&amp;gt; 
+struct QNode {
+    ElementType Data[ MaxSize ]; 
+    int rear;
+    int front;
+};
+typedef struct QNode *Queue;
+
+void AddQ( Queue PtrQ, ElementType item) {
+    if ( (PtrQ-&amp;gt;rear+1) % MaxSize == PtrQ-&amp;gt;front ) { 
+        printf(“队列满”);
+        return;
+    }
+    PtrQ-&amp;gt;rear = (PtrQ-&amp;gt;rear+1)% MaxSize; 
+    PtrQ-&amp;gt;Data[PtrQ-&amp;gt;rear] = item;
+}
+
+ElementType DeleteQ ( Queue PtrQ ) {
+    if ( PtrQ-&amp;gt;front == PtrQ-&amp;gt;rear ) { 
+        printf(“队列空”);
+        return ERROR;
+    } else {
+        PtrQ-&amp;gt;front = (PtrQ-&amp;gt;front+1)% MaxSize; 
+        return PtrQ-&amp;gt;Data[PtrQ-&amp;gt;front];
+    } 
+}&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;队列的链式存储实现&#34;&gt;队列的链式存储实现&lt;/h2&gt;
+
+&lt;p&gt;队列的链式存储结构也可以用一个单链表实现,插入和删除操作分别在链表的两头进行.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;class QueueNode&amp;lt;T:Hashable&amp;gt; : Equatable {
+    static func == (lhs: QueueNode&amp;lt;T&amp;gt;, rhs: QueueNode&amp;lt;T&amp;gt;) -&amp;gt; Bool {
+        if lhs.data == rhs.data &amp;amp;&amp;amp; lhs.next == rhs.next {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    var data : T?
+    var next : QueueNode&amp;lt;T&amp;gt;?
+    
+}
+
+class Queue&amp;lt;T:Hashable&amp;gt; {
+    var rear : QueueNode&amp;lt;T&amp;gt;?
+    var front : QueueNode&amp;lt;T&amp;gt;?
+    
+    func isEmpty() -&amp;gt; Bool {
+        if rear == nil &amp;amp;&amp;amp; front == nil {
+            return true
+        }
+        else {
+            return false;
+        }
+    }
+    
+    func add(item:T) -&amp;gt; Void {
+        let node = QueueNode&amp;lt;T&amp;gt;()
+        node.data = item
+        
+        if isEmpty() {
+            rear = node
+            front = node
+            return
+        }
+        
+        rear!.next = node
+        rear = node
+    }
+    
+    func delete() -&amp;gt; T? {
+        if isEmpty() {
+            print(&amp;#34;队列空&amp;#34;)
+            return nil
+        }
+        
+        if front == rear {
+            let data = front!.data
+            front = nil
+            rear = nil
+            return data
+        }
+        
+        let data = front?.data
+        front = front?.next
+        return data
+    }
+}
+
+let q = Queue&amp;lt;String&amp;gt;()
+q.add(item: &amp;#34;aaaa&amp;#34;)
+q.add(item: &amp;#34;bbbb&amp;#34;)
+print(q.rear?.data)
+print(q.front?.data)
+print(q.delete())
+print(q.rear?.data)
+print(q.front?.data)
+q.add(item: &amp;#34;cccc&amp;#34;)
+print(q.rear?.data)
+print(q.front?.data)
+print(q.delete())
+print(q.delete())
+print(q.delete())&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>线性表</title>
       <link>https://rangerzz.github.io/post/8/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>

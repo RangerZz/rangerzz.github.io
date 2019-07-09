@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>线性表 - Ranger&#39;s blog</title>
+  <title>队列 - Ranger&#39;s blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ranger" />
-  <meta name="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表" />
+  <meta name="description" content="队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:" />
 
   <meta name="keywords" content="权限, ReplayKit, iOS, 录屏, Ranger" />
 
@@ -37,7 +37,7 @@
 <meta name="generator" content="Hugo 0.47" />
 
 
-<link rel="canonical" href="https://rangerzz.github.io/post/8/" />
+<link rel="canonical" href="https://rangerzz.github.io/post/10/" />
 
 
 
@@ -58,25 +58,25 @@
 
 
 
-<meta property="og:title" content="线性表" />
-<meta property="og:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表" />
+<meta property="og:title" content="队列" />
+<meta property="og:description" content="队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rangerzz.github.io/post/8/" /><meta property="article:published_time" content="2019-07-08T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-07-08T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="线性表">
-<meta itemprop="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表">
+<meta property="og:url" content="https://rangerzz.github.io/post/10/" /><meta property="article:published_time" content="2019-07-09T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-09T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="队列">
+<meta itemprop="description" content="队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:">
 
 
-<meta itemprop="datePublished" content="2019-07-08T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1137">
+<meta itemprop="datePublished" content="2019-07-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="699">
 
 
 
-<meta itemprop="keywords" content="线性表,线性结构,数据结构与算法," />
+<meta itemprop="keywords" content="队列,线性结构,数据结构与算法," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="线性表"/>
-<meta name="twitter:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表"/>
+<meta name="twitter:title" content="队列"/>
+<meta name="twitter:description" content="队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -287,18 +287,18 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">线性表</h1>
+      <h1 class="post-title">队列</h1>
       
       <div class="post-meta">
-        <time datetime="2019-07-08" class="post-time">
-          2019-07-08
+        <time datetime="2019-07-09" class="post-time">
+          2019-07-09
         </time>
         <div class="post-category">
             <a href="https://rangerzz.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             
           </div>
-        <span class="more-meta"> 约 1137 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 699 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
         
@@ -317,20 +317,17 @@
 <ul>
 <li>
 <ul>
-<li><a href="#线性表">线性表</a></li>
-<li><a href="#线性表的抽象数据类型描述">线性表的抽象数据类型描述</a>
+<li><a href="#队列">队列</a>
 <ul>
-<li><a href="#类型名称-线性表-list">类型名称:线性表(List)</a></li>
-<li><a href="#数据对象集-线性表是n-n-0-个元素构成的有序序列-a1-a2-an">数据对象集:线性表是n(n&gt;=0)个元素构成的有序序列(a1,a2,&hellip;.an)</a></li>
+<li><a href="#队列的抽象数据类型描述">队列的抽象数据类型描述</a>
+<ul>
+<li><a href="#类型名称-队列-queue">类型名称:队列(Queue)</a></li>
+<li><a href="#数据对象集-一个有0个或多个元素的有穷线性表">数据对象集:一个有0个或多个元素的有穷线性表</a></li>
 <li><a href="#操作集">操作集</a></li>
 </ul></li>
-<li><a href="#线性表的实现方式">线性表的实现方式</a>
-<ul>
-<li><a href="#线性表的顺序存储实现-数组">线性表的顺序存储实现(数组)</a></li>
-<li><a href="#线性表的链式存储实现-链表">线性表的链式存储实现(链表)</a></li>
 </ul></li>
-<li><a href="#广义表">广义表</a></li>
-<li><a href="#多重链表">多重链表</a></li>
+<li><a href="#队列的顺序存储实现">队列的顺序存储实现</a></li>
+<li><a href="#队列的链式存储实现">队列的链式存储实现</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -341,41 +338,35 @@
     <div class="post-content">
       
 
-<h2 id="线性表">线性表</h2>
+<h2 id="队列">队列</h2>
 
-<p><strong>线性表(Linear List)</strong>:由同类型数据元素构成有序序列的线性结构,一对一</p>
+<h3 id="队列的抽象数据类型描述">队列的抽象数据类型描述</h3>
+
+<p>具有一定操作约束的线性表,只能在一端插入,而在另一端删除</p>
 
 <ul>
-<li>表中元素的个数称为线性表的长度</li>
-<li>线性表没有元素时称为空表</li>
-<li>表起始位置称为表头,结束位置称为表尾</li>
+<li>数据插入:入队</li>
+<li>数据删除:出队</li>
+<li>先进先出(FIFO)</li>
 </ul>
 
-<h2 id="线性表的抽象数据类型描述">线性表的抽象数据类型描述</h2>
+<h4 id="类型名称-队列-queue">类型名称:队列(Queue)</h4>
 
-<h3 id="类型名称-线性表-list">类型名称:线性表(List)</h3>
+<h4 id="数据对象集-一个有0个或多个元素的有穷线性表">数据对象集:一个有0个或多个元素的有穷线性表</h4>
 
-<h3 id="数据对象集-线性表是n-n-0-个元素构成的有序序列-a1-a2-an">数据对象集:线性表是n(n&gt;=0)个元素构成的有序序列(a1,a2,&hellip;.an)</h3>
-
-<h3 id="操作集">操作集</h3>
+<h4 id="操作集">操作集</h4>
 
 <ul>
-<li>初始化一个空线性表</li>
-<li>是否空表</li>
-<li>查找
-
-<ul>
-<li>根据key返回value</li>
-<li>根据value返回第一次出现此value的key</li>
-</ul></li>
-<li>插入</li>
-<li>删除</li>
-<li>表长</li>
+<li>创建空队列</li>
+<li>判读队列是否已满</li>
+<li>插入元素</li>
+<li>队列是否为空</li>
+<li>将队列头部元素删除并返回</li>
 </ul>
 
-<h2 id="线性表的实现方式">线性表的实现方式</h2>
+<h2 id="队列的顺序存储实现">队列的顺序存储实现</h2>
 
-<h3 id="线性表的顺序存储实现-数组">线性表的顺序存储实现(数组)</h3>
+<p>队列的顺序存储结构通常由一个一维数组和一个记录队列头元素位置的变量front以及一个记录队列尾元素位置的变量rear组成</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -406,100 +397,41 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">// 线性结构的数组实现
-struct LinearListUseArray&lt;T&gt; where T : Equatable, T : Any {
-    var data : [T]?
-    var last : Int// 最后一个下标
-    
-    init() {
-        data = nil
-        last = -1
+<pre class="chroma">swift的特性不适合描述一个数组实现的队列,故采用老师提供的C语音实现
+
+#define MaxSize &lt;储存数据元素的最大个数&gt; 
+struct QNode {
+    ElementType Data[ MaxSize ]; 
+    int rear;
+    int front;
+};
+typedef struct QNode *Queue;
+
+void AddQ( Queue PtrQ, ElementType item) {
+    if ( (PtrQ-&gt;rear+1) % MaxSize == PtrQ-&gt;front ) { 
+        printf(“队列满”);
+        return;
     }
-    
-    func isEmpty() -&gt; Bool {
-        return last &lt; 0
-    }
-    
-    func key(for value:T) -&gt; Int {
-        if isEmpty() {
-            return NSNotFound
-        }
-        if let array = data {
-            for i in 0..&lt;array.count {
-                if array[i] == value {
-                    return i
-                }
-            }
-            return NSNotFound
-        }
-        else {
-            return NSNotFound
-        }
-    }
-    
-    func value(for key:Int) -&gt; T? {
-        if isEmpty() || key &lt; 0 || key &gt; last {
-            return nil
-        }
-        return data?[key]
-    }
-    
-    mutating func insert(value v:T, at i:Int) -&gt; Bool {
-        if i&lt;0 || i &gt; last || isEmpty() {
-            return false
-        }
-        data?.insert(v, at: i)
-        last += 1
-        return true;
-    }
-    
-    mutating func delete(key i:Int) -&gt; T? {
-        if i&lt;0 || i &gt; last || isEmpty()  {
-            return nil
-        }
-        let v = data?.remove(at: i)
-        last -= 1
-        return v
-    }
+    PtrQ-&gt;rear = (PtrQ-&gt;rear+1)% MaxSize; 
+    PtrQ-&gt;Data[PtrQ-&gt;rear] = item;
+}
+
+ElementType DeleteQ ( Queue PtrQ ) {
+    if ( PtrQ-&gt;front == PtrQ-&gt;rear ) { 
+        printf(“队列空”);
+        return ERROR;
+    } else {
+        PtrQ-&gt;front = (PtrQ-&gt;front+1)% MaxSize; 
+        return PtrQ-&gt;Data[PtrQ-&gt;front];
+    } 
 }</pre></td></tr></table>
 </div>
 </div>
-<h3 id="线性表的链式存储实现-链表">线性表的链式存储实现(链表)</h3>
+<h2 id="队列的链式存储实现">队列的链式存储实现</h2>
 
-<ul>
-<li>不要求逻辑上相邻的元素在物理存储上也相邻</li>
-<li>插入,删除不需要移动元素,只需要修改链</li>
-</ul>
+<p>队列的链式存储结构也可以用一个单链表实现,插入和删除操作分别在链表的两头进行.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -577,142 +509,85 @@ struct LinearListUseArray&lt;T&gt; where T : Equatable, T : Any {
 </span><span class="lnt">73
 </span><span class="lnt">74
 </span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">class LinearListNode&lt;T: Hashable&gt; {
-    var data : T?
-    var next : LinearListNode?
-    init(data:T?) {
-        self.data = data
-    }
-}
-
-class LinearList&lt;T : Hashable&gt; {
-    var head : LinearListNode&lt;T&gt;?
-    init() {
-        head = nil
-    }
-    
-    func length() -&gt; Int {
-        var length = 0, n = head
-        while (n != nil) {
-            n = n!.next
-            length += 1
-        }
-        return length
-    }
-    
-    func findNode(number:Int) -&gt; LinearListNode&lt;T&gt;? {
-        var i = 0, n = head
-        while n != nil &amp;&amp; i &lt; number {
-            n = n!.next
-            i += 1
-        }
-        if i == number {
-            return n
+<pre class="chroma">class QueueNode&lt;T:Hashable&gt; : Equatable {
+    static func == (lhs: QueueNode&lt;T&gt;, rhs: QueueNode&lt;T&gt;) -&gt; Bool {
+        if lhs.data == rhs.data &amp;&amp; lhs.next == rhs.next {
+            return true
         }
         else {
-            return nil
+            return false
         }
     }
     
-    func findNode(data:T) -&gt; LinearListNode&lt;T&gt;? {
-        var n = head
-        while n != nil {
-            if n!.data == data {
-                return n
-            }
-            n = n!.next
+    var data : T?
+    var next : QueueNode&lt;T&gt;?
+    
+}
+
+class Queue&lt;T:Hashable&gt; {
+    var rear : QueueNode&lt;T&gt;?
+    var front : QueueNode&lt;T&gt;?
+    
+    func isEmpty() -&gt; Bool {
+        if rear == nil &amp;&amp; front == nil {
+            return true
         }
-        return nil
+        else {
+            return false;
+        }
     }
     
-    func insert(value:T, at i:Int) -&gt; Void {
-        let node = LinearListNode(data: value);
-        if i == 0 {
-            node.next = head
-            head = node;
+    func add(item:T) -&gt; Void {
+        let node = QueueNode&lt;T&gt;()
+        node.data = item
+        
+        if isEmpty() {
+            rear = node
+            front = node
             return
         }
         
-        let lastNode = findNode(number: i - 1)
-        node.next = lastNode?.next
-        lastNode?.next = node
+        rear!.next = node
+        rear = node
     }
     
-    func delete(at i:Int) -&gt; T?{
-        var temp : T? = nil
-        if i == 0 {
-            temp = head?.data
-            head = head?.next
-            return temp
-        }
-        
-        let n = findNode(number: i - 1)
-        if n == nil || n!.next == nil {
+    func delete() -&gt; T? {
+        if isEmpty() {
+            print(&#34;队列空&#34;)
             return nil
         }
-        temp = n!.next!.data
-        n!.next = n!.next!.next
-        return temp
+        
+        if front == rear {
+            let data = front!.data
+            front = nil
+            rear = nil
+            return data
+        }
+        
+        let data = front?.data
+        front = front?.next
+        return data
     }
 }
 
-let list = LinearList&lt;String&gt;()
-list.insert(value: &#34;aaa&#34;, at: 0)
-list.insert(value: &#34;bbb&#34;, at: 1)
-list.insert(value: &#34;ccc&#34;, at: 2)</pre></td></tr></table>
+let q = Queue&lt;String&gt;()
+q.add(item: &#34;aaaa&#34;)
+q.add(item: &#34;bbbb&#34;)
+print(q.rear?.data)
+print(q.front?.data)
+print(q.delete())
+print(q.rear?.data)
+print(q.front?.data)
+q.add(item: &#34;cccc&#34;)
+print(q.rear?.data)
+print(q.front?.data)
+print(q.delete())
+print(q.delete())
+print(q.delete())</pre></td></tr></table>
 </div>
 </div>
-<h2 id="广义表">广义表</h2>
-
-<ul>
-<li>广义表是线性表的推广</li>
-<li>线性表中,n个元素都是单元素</li>
-<li>广义表中,元素不仅可以是单元素也可以是另一个广义表</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">typedef struct GNode *GList; 
-struct GNode{
-    int Tag; /*标志域:0表示结点是单元素，1表示结点是广义表 */
-    union { /*子表指针域Sublist与单元素数据域Data复用，即共用存储空间*/
-        ElementType Data;
-        GList SubList;
-    } URegion;
-    GList Next; /* 指向后继结点 */
-};</pre></td></tr></table>
-</div>
-</div>
-<h2 id="多重链表">多重链表</h2>
-
-<p>链表中的节点可能同时隶属于多个链</p>
-
-<ul>
-<li>多重链表中的节点的指针域会有多个,例如广义表中的Next和SubList两个指针域</li>
-<li>但包含两个指针域的链表不一定是多重链表,如双向链表不是多重链表</li>
-<li>多重链表有广泛的用途,如树,图这种复杂度数据结构都可以用多重链表的方式实现存储</li>
-</ul>
-
     </div>
 
     
@@ -724,7 +599,7 @@ struct GNode{
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-07-08</span>
+    <span class="item-content">2019-07-09</span>
   </p>
   
   <p class="copyright-item">
@@ -738,7 +613,7 @@ struct GNode{
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://rangerzz.github.io/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</a>
+          <a href="https://rangerzz.github.io/tags/%E9%98%9F%E5%88%97/">队列</a>
           <a href="https://rangerzz.github.io/tags/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/">线性结构</a>
           <a href="https://rangerzz.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
           
@@ -747,7 +622,7 @@ struct GNode{
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/10/">
+          <a class="prev" href="/post/9/">
             
             <i class="iconfont">
               <svg t="1521943583735" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
@@ -761,12 +636,12 @@ struct GNode{
 </svg>
 
             </i>
-            <span class="prev-text nav-default">队列</span>
+            <span class="prev-text nav-default">堆栈</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/7/">
-            <span class="next-text nav-default">数据结构与算法基本概念</span>
+          <a class="next" href="/post/8/">
+            <span class="next-text nav-default">线性表</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -800,10 +675,10 @@ struct GNode{
         <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
       <script type="text/javascript">
       const gitment = new Gitment({
-        id: '8.md',
-        title: '线性表',
+        id: '10.md',
+        title: '队列',
         link: decodeURI(location.href),
-        desc: '线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表',
+        desc: '队列 队列的抽象数据类型描述 具有一定操作约束的线性表,只能在一端插入,而在另一端删除 数据插入:入队 数据删除:出队 先进先出(FIFO) 类型名称:',
         owner: 'RangerZz',
         repo: 'blogs',
         oauth: {
