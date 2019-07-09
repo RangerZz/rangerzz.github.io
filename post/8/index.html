@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ranger" />
-  <meta name="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表起始位置" />
+  <meta name="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表" />
 
   <meta name="keywords" content="权限, ReplayKit, iOS, 录屏, Ranger" />
 
@@ -59,24 +59,24 @@
 
 
 <meta property="og:title" content="线性表" />
-<meta property="og:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表起始位置" />
+<meta property="og:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rangerzz.github.io/post/8/" /><meta property="article:published_time" content="2019-07-08T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2019-07-08T00:00:00&#43;00:00"/>
 <meta itemprop="name" content="线性表">
-<meta itemprop="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表起始位置">
+<meta itemprop="description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表">
 
 
 <meta itemprop="datePublished" content="2019-07-08T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-08T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="899">
+<meta itemprop="wordCount" content="1137">
 
 
 
 <meta itemprop="keywords" content="线性表,线性结构,数据结构与算法," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="线性表"/>
-<meta name="twitter:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表起始位置"/>
+<meta name="twitter:description" content="线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -297,8 +297,8 @@
             <a href="https://rangerzz.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             
           </div>
-        <span class="more-meta"> 约 899 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1137 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
 
         
         
@@ -317,16 +317,20 @@
 <ul>
 <li>
 <ul>
-<li><a href="#线性表">线性表</a>
+<li><a href="#线性表">线性表</a></li>
+<li><a href="#线性表的抽象数据类型描述">线性表的抽象数据类型描述</a>
 <ul>
-<li><a href="#基本操作">基本操作</a></li>
-<li><a href="#两种实现方式">两种实现方式</a>
+<li><a href="#类型名称-线性表-list">类型名称:线性表(List)</a></li>
+<li><a href="#数据对象集-线性表是n-n-0-个元素构成的有序序列-a1-a2-an">数据对象集:线性表是n(n&gt;=0)个元素构成的有序序列(a1,a2,&hellip;.an)</a></li>
+<li><a href="#操作集">操作集</a></li>
+</ul></li>
+<li><a href="#线性表的实现方式">线性表的实现方式</a>
 <ul>
-<li><a href="#数组实现">数组实现</a></li>
-<li><a href="#链表实现">链表实现</a></li>
+<li><a href="#线性表的顺序存储实现-数组">线性表的顺序存储实现(数组)</a></li>
+<li><a href="#线性表的链式存储实现-链表">线性表的链式存储实现(链表)</a></li>
 </ul></li>
 <li><a href="#广义表">广义表</a></li>
-</ul></li>
+<li><a href="#多重链表">多重链表</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -339,7 +343,7 @@
 
 <h2 id="线性表">线性表</h2>
 
-<p><strong>线性表(Linear List)</strong>:由同类型数据元素构成有序序列的线性结构</p>
+<p><strong>线性表(Linear List)</strong>:由同类型数据元素构成有序序列的线性结构,一对一</p>
 
 <ul>
 <li>表中元素的个数称为线性表的长度</li>
@@ -347,10 +351,16 @@
 <li>表起始位置称为表头,结束位置称为表尾</li>
 </ul>
 
-<h3 id="基本操作">基本操作</h3>
+<h2 id="线性表的抽象数据类型描述">线性表的抽象数据类型描述</h2>
+
+<h3 id="类型名称-线性表-list">类型名称:线性表(List)</h3>
+
+<h3 id="数据对象集-线性表是n-n-0-个元素构成的有序序列-a1-a2-an">数据对象集:线性表是n(n&gt;=0)个元素构成的有序序列(a1,a2,&hellip;.an)</h3>
+
+<h3 id="操作集">操作集</h3>
 
 <ul>
-<li>建表</li>
+<li>初始化一个空线性表</li>
 <li>是否空表</li>
 <li>查找
 
@@ -363,9 +373,9 @@
 <li>表长</li>
 </ul>
 
-<h3 id="两种实现方式">两种实现方式</h3>
+<h2 id="线性表的实现方式">线性表的实现方式</h2>
 
-<h4 id="数组实现">数组实现</h4>
+<h3 id="线性表的顺序存储实现-数组">线性表的顺序存储实现(数组)</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -484,7 +494,7 @@ struct LinearListUseArray&lt;T&gt; where T : Equatable, T : Any {
 }</pre></td></tr></table>
 </div>
 </div>
-<h4 id="链表实现">链表实现</h4>
+<h3 id="线性表的链式存储实现-链表">线性表的链式存储实现(链表)</h3>
 
 <ul>
 <li>不要求逻辑上相邻的元素在物理存储上也相邻</li>
@@ -662,7 +672,7 @@ list.insert(value: &#34;bbb&#34;, at: 1)
 list.insert(value: &#34;ccc&#34;, at: 2)</pre></td></tr></table>
 </div>
 </div>
-<h3 id="广义表">广义表</h3>
+<h2 id="广义表">广义表</h2>
 
 <ul>
 <li>广义表是线性表的推广</li>
@@ -693,6 +703,16 @@ struct GNode{
 };</pre></td></tr></table>
 </div>
 </div>
+<h2 id="多重链表">多重链表</h2>
+
+<p>链表中的节点可能同时隶属于多个链</p>
+
+<ul>
+<li>多重链表中的节点的指针域会有多个,例如广义表中的Next和SubList两个指针域</li>
+<li>但包含两个指针域的链表不一定是多重链表,如双向链表不是多重链表</li>
+<li>多重链表有广泛的用途,如树,图这种复杂度数据结构都可以用多重链表的方式实现存储</li>
+</ul>
+
     </div>
 
     
@@ -727,6 +747,23 @@ struct GNode{
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/9/">
+            
+            <i class="iconfont">
+              <svg t="1521943583735" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" p-id="1044" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <defs>
+    <style type="text/css"></style>
+  </defs>
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"
+    p-id="1045"></path>
+</svg>
+
+            </i>
+            <span class="prev-text nav-default">堆栈</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
           <a class="next" href="/post/7/">
             <span class="next-text nav-default">数据结构与算法基本概念</span>
@@ -766,7 +803,7 @@ struct GNode{
         id: '8.md',
         title: '线性表',
         link: decodeURI(location.href),
-        desc: '线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表起始位置',
+        desc: '线性表 线性表(Linear List):由同类型数据元素构成有序序列的线性结构,一对一 表中元素的个数称为线性表的长度 线性表没有元素时称为空表 表',
         owner: 'RangerZz',
         repo: 'blogs',
         oauth: {

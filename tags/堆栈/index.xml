@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>堆栈 on Ranger&#39;s blog</title>
+    <link>https://rangerzz.github.io/tags/%E5%A0%86%E6%A0%88/</link>
+    <description>Recent content in 堆栈 on Ranger&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://rangerzz.github.io/tags/%E5%A0%86%E6%A0%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>堆栈</title>
+      <link>https://rangerzz.github.io/post/9/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/9/</guid>
+      <description>堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出</description>
+    </item>
+    
+  </channel>
+</rss>

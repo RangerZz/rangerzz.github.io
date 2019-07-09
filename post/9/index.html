@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>数据结构与算法基本概念 - Ranger&#39;s blog</title>
+  <title>堆栈 - Ranger&#39;s blog</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Ranger" />
-  <meta name="description" content="大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算" />
+  <meta name="description" content="堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出" />
 
   <meta name="keywords" content="权限, ReplayKit, iOS, 录屏, Ranger" />
 
@@ -37,7 +37,7 @@
 <meta name="generator" content="Hugo 0.47" />
 
 
-<link rel="canonical" href="https://rangerzz.github.io/post/7/" />
+<link rel="canonical" href="https://rangerzz.github.io/post/9/" />
 
 
 
@@ -58,25 +58,25 @@
 
 
 
-<meta property="og:title" content="数据结构与算法基本概念" />
-<meta property="og:description" content="大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算" />
+<meta property="og:title" content="堆栈" />
+<meta property="og:description" content="堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://rangerzz.github.io/post/7/" /><meta property="article:published_time" content="2019-07-04T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-07-04T00:00:00&#43;00:00"/>
-<meta itemprop="name" content="数据结构与算法基本概念">
-<meta itemprop="description" content="大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算">
+<meta property="og:url" content="https://rangerzz.github.io/post/9/" /><meta property="article:published_time" content="2019-07-09T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-09T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="堆栈">
+<meta itemprop="description" content="堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出">
 
 
-<meta itemprop="datePublished" content="2019-07-04T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-04T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="894">
+<meta itemprop="datePublished" content="2019-07-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="943">
 
 
 
-<meta itemprop="keywords" content="概念,Swift,数据结构与算法," />
+<meta itemprop="keywords" content="堆栈,线性结构,数据结构与算法," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="数据结构与算法基本概念"/>
-<meta name="twitter:description" content="大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算"/>
+<meta name="twitter:title" content="堆栈"/>
+<meta name="twitter:description" content="堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -287,17 +287,17 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">数据结构与算法基本概念</h1>
+      <h1 class="post-title">堆栈</h1>
       
       <div class="post-meta">
-        <time datetime="2019-07-04" class="post-time">
-          2019-07-04
+        <time datetime="2019-07-09" class="post-time">
+          2019-07-09
         </time>
         <div class="post-category">
             <a href="https://rangerzz.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"> 数据结构与算法 </a>
             
           </div>
-        <span class="more-meta"> 约 894 字 </span>
+        <span class="more-meta"> 约 943 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
 
         
@@ -317,27 +317,23 @@
 <ul>
 <li>
 <ul>
-<li><a href="#数据结构">数据结构</a>
+<li><a href="#堆栈">堆栈</a>
 <ul>
-<li><a href="#什么是数据结构">什么是数据结构</a>
+<li><a href="#抽象数据类型描述">抽象数据类型描述</a>
 <ul>
-<li><a href="#数据对象在计算机中的组织方式">数据对象在计算机中的组织方式</a></li>
-<li><a href="#数据对象必定与一系列加在其上的操作相关联">数据对象必定与一系列加在其上的操作相关联</a></li>
-<li><a href="#完成这些操作所用的方法就是-算法">完成这些操作所用的方法就是<strong>算法</strong></a></li>
-</ul></li>
-<li><a href="#抽象数据类型-abstract-data-type">抽象数据类型(Abstract Data Type)</a>
-<ul>
-<li><a href="#数据类型">数据类型</a></li>
-<li><a href="#抽象">抽象</a></li>
+<li><a href="#类型名称-堆栈-stack">类型名称:堆栈(Stack)</a></li>
+<li><a href="#数据对象集-一个-有0个或多个元素的有穷线性表">数据对象集:一个 有0个或多个元素的有穷线性表</a></li>
+<li><a href="#操作集">操作集</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#算法-algorithm">算法(Algorithm)</a>
+<li><a href="#堆栈的顺序存储实现">堆栈的顺序存储实现</a></li>
+<li><a href="#堆栈的链式存储实现">堆栈的链式存储实现</a></li>
+<li><a href="#堆栈应用">堆栈应用</a>
 <ul>
-<li><a href="#空间复杂图s-n">空间复杂图S(n)</a></li>
-<li><a href="#时间复杂度t-n">时间复杂度T(n)</a></li>
-<li><a href="#复杂度分析">复杂度分析</a></li>
+<li><a href="#后缀表达式求值">后缀表达式求值</a></li>
+<li><a href="#中缀表达式求值">中缀表达式求值</a></li>
+<li><a href="#其他应用">其他应用</a></li>
 </ul></li>
-<li><a href="#最大子列和问题">最大子列和问题</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -348,96 +344,35 @@
     <div class="post-content">
       
 
-<p>大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算法这门课程.
-本系列文章是我在学习<strong>中国大学MOOC网中浙江大学陈越、何钦铭老师的《数据结构》</strong>这门课程的学习笔记.</p>
+<h2 id="堆栈">堆栈</h2>
 
-<h2 id="数据结构">数据结构</h2>
+<h3 id="抽象数据类型描述">抽象数据类型描述</h3>
 
-<blockquote>
-<p>“数据结构(data structure)是计算机中存储、组织
-数据的方式。”-中文维基百科</p>
-</blockquote>
+<p><strong>具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除</strong></p>
 
 <ul>
-<li>解决问题方法的效率,和数据的组织方式有关.</li>
-<li>解决问题方法的效率,和空间的利用效率有关.</li>
-<li>解决问题方法的效率,和算法的巧妙程度有关.</li>
+<li>插入数据:入栈(Push)</li>
+<li>删除数据:出栈(Pop)</li>
+<li>后入先出:Last In First Out(LIFO)</li>
 </ul>
 
-<h3 id="什么是数据结构">什么是数据结构</h3>
+<h4 id="类型名称-堆栈-stack">类型名称:堆栈(Stack)</h4>
 
-<h4 id="数据对象在计算机中的组织方式">数据对象在计算机中的组织方式</h4>
+<h4 id="数据对象集-一个-有0个或多个元素的有穷线性表">数据对象集:一个 有0个或多个元素的有穷线性表</h4>
+
+<h4 id="操作集">操作集</h4>
 
 <ul>
-<li>逻辑结构</li>
-<li>物理存储结构</li>
+<li>创建空堆栈</li>
+<li>判断堆栈是否已满</li>
+<li>将元素压入堆栈</li>
+<li>判断堆栈是否为空</li>
+<li>删除并返回栈顶元素</li>
 </ul>
 
-<h4 id="数据对象必定与一系列加在其上的操作相关联">数据对象必定与一系列加在其上的操作相关联</h4>
+<h2 id="堆栈的顺序存储实现">堆栈的顺序存储实现</h2>
 
-<h4 id="完成这些操作所用的方法就是-算法">完成这些操作所用的方法就是<strong>算法</strong></h4>
-
-<h3 id="抽象数据类型-abstract-data-type">抽象数据类型(Abstract Data Type)</h3>
-
-<h4 id="数据类型">数据类型</h4>
-
-<ul>
-<li>数据对象集</li>
-<li>数据集合相关联的操作集</li>
-</ul>
-
-<h4 id="抽象">抽象</h4>
-
-<p>描述数据类型的方法不依赖于具体实现
-* 与存放数据的机器无关
-* 与数据存储的物理结构无关
-* 与实现操作的算法和编程语言无关</p>
-
-<h2 id="算法-algorithm">算法(Algorithm)</h2>
-
-<ul>
-<li>一个有限指令集</li>
-<li>接受一些输入(有些情况不需要输入)</li>
-<li>产生输出</li>
-<li>一定在有限步骤后终止</li>
-<li>每一条指令必须
-
-<ul>
-<li>有充分明确的目标,不可以有歧义</li>
-<li>计算机能处理的范围之内</li>
-<li>描述应不依赖于任何一种计算机语言以及具体的实现手段
-<br /></li>
-</ul></li>
-</ul>
-
-<h3 id="空间复杂图s-n">空间复杂图S(n)</h3>
-
-<p>根据算法写成的程序在执行时占用存储单元的长度.这个长度往往与输入数据的规模有关.空间复杂度过高的算法可能导致使用的内存超限,造成程序的异常中断.</p>
-
-<h3 id="时间复杂度t-n">时间复杂度T(n)</h3>
-
-<p>根据算法写成的程序在执行时耗费时间的长度.这个长度往往与输入数据的规模有关.时间复杂度过高的低效算法可能需要很久也等不到运行结果.
-<img src="media/15619508314149/15622290928478.jpg" alt="-w474" /></p>
-
-<h3 id="复杂度分析">复杂度分析</h3>
-
-<ul>
-<li>若两段算法分别有复杂度T1(n) = O(f1(n)) 和T2(n) = O(f2(n))，则
-
-<ul>
-<li>T1(n) + T2(n) = max( O(f1(n)), O(f2(n)) )</li>
-<li>T1(n) * T2(n) = O( f1(n) * f2(n) )</li>
-</ul></li>
-<li>若T(n)是关于n的k阶多项式，那么T(n)=Θ(nk)</li>
-<li>一个for循环的时间复杂度等于循环次数乘以循环体
-代码的复杂度</li>
-<li>一个for循环的时间复杂度等于循环次数乘以循环体
-代码的复杂度</li>
-</ul>
-
-<h2 id="最大子列和问题">最大子列和问题</h2>
-
-<p>给定N个整数的序列{ A1, A2, &hellip;, AN},求最大连续子列的和</p>
+<p>通常由一个一维数组和一个记录栈顶元素位置的变量组成</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -453,23 +388,275 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">func SublistMaxSum(list:[Int])-&gt;Int {
-    var sum = 0, max = 0
-    for item in list {
-        sum += item;
-        if sum &gt; max {
-            max = sum
+<pre class="chroma">class Stack&lt;T:Hashable&gt; {
+    var data : Array&lt;T&gt; = Array();
+    var top : Int = -1
+    
+    
+    func push(_ item:T) -&gt; Void {
+        data.append(item)
+        top += 1
+    }
+    
+    func pop() -&gt; T? {
+        if top == -1 {
+            print(&#34;空堆栈&#34;)
+            return nil
         }
-        else if sum &lt; 0 {
-            sum = 0
+        top -= 1
+        return data.popLast()
+    }
+}
+
+let stack = Stack&lt;Int&gt;()
+stack.push(0)
+stack.push(1)
+
+print(stack.pop())
+print(stack.top)</pre></td></tr></table>
+</div>
+</div>
+<h2 id="堆栈的链式存储实现">堆栈的链式存储实现</h2>
+
+<p>堆栈的链式存储结构实际上是一个单链表,叫做链栈,插入和删除操作只能在链栈的栈顶进行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">class StackNode&lt;T:Hashable&gt; {
+    var data : T?
+    var next : StackNode?
+}
+
+class Stack&lt;T:Hashable&gt; {
+    var top = StackNode&lt;T&gt;()// 指向栈顶,本身无意义
+    
+    func isEmpty() -&gt; Bool {
+        if top.next == nil {
+            return true
+        }
+        else {
+            return false
         }
     }
-    return max
-}</pre></td></tr></table>
+    
+    func push(_ item:T) -&gt; Void {
+        let node = StackNode&lt;T&gt;();
+        node.data = item;
+        node.next = top.next;
+        top.next = node
+    }
+    
+    func pop() -&gt; T? {
+        if isEmpty() {
+            print(&#34;空堆栈&#34;)
+            return nil
+        }
+        
+        let node = top.next
+        top.next = top.next?.next
+        return node!.data
+    }
+}
+
+let stack = Stack&lt;String&gt;()
+stack.push(&#34;aaa&#34;)
+stack.push(&#34;bbb&#34;)
+print(stack.top.next?.data)
+print(stack.pop())
+print(stack.pop())
+print(stack.isEmpty())
+stack.push(&#34;cccc&#34;)
+print(stack.top.next?.data)</pre></td></tr></table>
 </div>
 </div>
+<h2 id="堆栈应用">堆栈应用</h2>
+
+<h3 id="后缀表达式求值">后缀表达式求值</h3>
+
+<ul>
+<li>从左向右扫描,逐个处理运算数和运算符号</li>
+<li>遇到运算数,入栈</li>
+<li>遇到运算符,出栈两个运算数,做运算</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">class ExpressionOperation {
+    func input(expression:[String]) -&gt; Int {
+        let stack = Stack&lt;Int&gt;()
+        
+        for value in expression {
+            if isInt(string: value) {
+                stack.push(Int(value)!)
+            }
+            else {
+                let a = stack.pop()!
+                let b = stack.pop()!
+                var ret = 0
+                
+                switch value {
+                    case &#34;+&#34;:
+                        ret = a + b;
+                    case &#34;-&#34;:
+                        ret = b - a;
+                    case &#34;*&#34;:
+                        ret = a * b;
+                    case &#34;/&#34;:
+                        ret = b / a;
+             
+                    default:
+                        ret = 0
+                }
+                stack.push(ret)
+            }
+        }
+        return stack.top.next!.data!
+    }
+    
+    func isInt(string: String) -&gt; Bool {
+        let scan: Scanner = Scanner(string: string)
+        var val:Int = 0
+        return scan.scanInt(&amp;val) &amp;&amp; scan.isAtEnd
+    }
+}
+
+let test1 = [&#34;1&#34;,&#34;1&#34;,&#34;+&#34;,&#34;2&#34;,&#34;*&#34;,&#34;2&#34;,&#34;-&#34;,&#34;1&#34;,&#34;/&#34;]
+let test2 = [&#34;2&#34;,&#34;9&#34;,&#34;3&#34;,&#34;/&#34;,&#34;+&#34;,&#34;4&#34;,&#34;-&#34;]
+let exp = ExpressionOperation()
+exp.input(expression: test)</pre></td></tr></table>
+</div>
+</div>
+<h3 id="中缀表达式求值">中缀表达式求值</h3>
+
+<p>基本策略:将中缀表达式转换为后缀表示式,然后求值</p>
+
+<ul>
+<li>从头到尾读取中缀表达式的每个元素</li>
+<li>运算数:直接输出</li>
+<li>左括号:入栈</li>
+<li>右括号:将栈顶的运算符出栈并输出,直到遇到左括号(出栈,不输出)</li>
+<li>运算符:
+
+<ul>
+<li>若优先级大于栈顶运算符时,则入栈</li>
+<li>若优先级小于栈顶运算符时,将栈顶运算符出栈并输出,再比较新的栈顶运算符,直到该运算符优先级大于栈顶运算符为止,然后该运算符入栈</li>
+<li>若对各个元素处理完毕,则把堆栈中留存的运算符一并输出</li>
+</ul></li>
+</ul>
+
+<h3 id="其他应用">其他应用</h3>
+
+<ul>
+<li>函数调用及递归实现</li>
+<li>深度优先搜索</li>
+<li>回溯算法</li>
+</ul>
+
     </div>
 
     
@@ -481,7 +668,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-07-04</span>
+    <span class="item-content">2019-07-09</span>
   </p>
   
   <p class="copyright-item">
@@ -495,8 +682,8 @@
 
     <footer class="post-footer">
       <div class="post-tags">
-          <a href="https://rangerzz.github.io/tags/%E6%A6%82%E5%BF%B5/">概念</a>
-          <a href="https://rangerzz.github.io/tags/swift/">Swift</a>
+          <a href="https://rangerzz.github.io/tags/%E5%A0%86%E6%A0%88/">堆栈</a>
+          <a href="https://rangerzz.github.io/tags/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/">线性结构</a>
           <a href="https://rangerzz.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
           
         </div>
@@ -504,26 +691,9 @@
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/8/">
-            
-            <i class="iconfont">
-              <svg t="1521943583735" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" p-id="1044" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <defs>
-    <style type="text/css"></style>
-  </defs>
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"
-    p-id="1045"></path>
-</svg>
-
-            </i>
-            <span class="prev-text nav-default">线性表</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/post/6/">
-            <span class="next-text nav-default">正则表达式</span>
+          <a class="next" href="/post/8/">
+            <span class="next-text nav-default">线性表</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -557,10 +727,10 @@
         <script src="/lib/gitment/gitment-0.0.3.min.js"></script>
       <script type="text/javascript">
       const gitment = new Gitment({
-        id: '7.md',
-        title: '数据结构与算法基本概念',
+        id: '9.md',
+        title: '堆栈',
         link: decodeURI(location.href),
-        desc: '大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算',
+        desc: '堆栈 抽象数据类型描述 具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除 插入数据:入栈(Push) 删除数据:出栈(Pop) 后入先出',
         owner: 'RangerZz',
         repo: 'blogs',
         oauth: {

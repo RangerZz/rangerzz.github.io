@@ -24,6 +24,331 @@
     </item>
     
     <item>
+      <title>堆栈</title>
+      <link>https://rangerzz.github.io/post/9/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/9/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;堆栈&#34;&gt;堆栈&lt;/h2&gt;
+
+&lt;h3 id=&#34;抽象数据类型描述&#34;&gt;抽象数据类型描述&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;具有一定操作约束的线性表,只在一端(栈顶,Top)做插入,删除&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;插入数据:入栈(Push)&lt;/li&gt;
+&lt;li&gt;删除数据:出栈(Pop)&lt;/li&gt;
+&lt;li&gt;后入先出:Last In First Out(LIFO)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;类型名称-堆栈-stack&#34;&gt;类型名称:堆栈(Stack)&lt;/h4&gt;
+
+&lt;h4 id=&#34;数据对象集-一个-有0个或多个元素的有穷线性表&#34;&gt;数据对象集:一个 有0个或多个元素的有穷线性表&lt;/h4&gt;
+
+&lt;h4 id=&#34;操作集&#34;&gt;操作集&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;创建空堆栈&lt;/li&gt;
+&lt;li&gt;判断堆栈是否已满&lt;/li&gt;
+&lt;li&gt;将元素压入堆栈&lt;/li&gt;
+&lt;li&gt;判断堆栈是否为空&lt;/li&gt;
+&lt;li&gt;删除并返回栈顶元素&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;堆栈的顺序存储实现&#34;&gt;堆栈的顺序存储实现&lt;/h2&gt;
+
+&lt;p&gt;通常由一个一维数组和一个记录栈顶元素位置的变量组成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;class Stack&amp;lt;T:Hashable&amp;gt; {
+    var data : Array&amp;lt;T&amp;gt; = Array();
+    var top : Int = -1
+    
+    
+    func push(_ item:T) -&amp;gt; Void {
+        data.append(item)
+        top += 1
+    }
+    
+    func pop() -&amp;gt; T? {
+        if top == -1 {
+            print(&amp;#34;空堆栈&amp;#34;)
+            return nil
+        }
+        top -= 1
+        return data.popLast()
+    }
+}
+
+let stack = Stack&amp;lt;Int&amp;gt;()
+stack.push(0)
+stack.push(1)
+
+print(stack.pop())
+print(stack.top)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;堆栈的链式存储实现&#34;&gt;堆栈的链式存储实现&lt;/h2&gt;
+
+&lt;p&gt;堆栈的链式存储结构实际上是一个单链表,叫做链栈,插入和删除操作只能在链栈的栈顶进行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;class StackNode&amp;lt;T:Hashable&amp;gt; {
+    var data : T?
+    var next : StackNode?
+}
+
+class Stack&amp;lt;T:Hashable&amp;gt; {
+    var top = StackNode&amp;lt;T&amp;gt;()// 指向栈顶,本身无意义
+    
+    func isEmpty() -&amp;gt; Bool {
+        if top.next == nil {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func push(_ item:T) -&amp;gt; Void {
+        let node = StackNode&amp;lt;T&amp;gt;();
+        node.data = item;
+        node.next = top.next;
+        top.next = node
+    }
+    
+    func pop() -&amp;gt; T? {
+        if isEmpty() {
+            print(&amp;#34;空堆栈&amp;#34;)
+            return nil
+        }
+        
+        let node = top.next
+        top.next = top.next?.next
+        return node!.data
+    }
+}
+
+let stack = Stack&amp;lt;String&amp;gt;()
+stack.push(&amp;#34;aaa&amp;#34;)
+stack.push(&amp;#34;bbb&amp;#34;)
+print(stack.top.next?.data)
+print(stack.pop())
+print(stack.pop())
+print(stack.isEmpty())
+stack.push(&amp;#34;cccc&amp;#34;)
+print(stack.top.next?.data)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;堆栈应用&#34;&gt;堆栈应用&lt;/h2&gt;
+
+&lt;h3 id=&#34;后缀表达式求值&#34;&gt;后缀表达式求值&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从左向右扫描,逐个处理运算数和运算符号&lt;/li&gt;
+&lt;li&gt;遇到运算数,入栈&lt;/li&gt;
+&lt;li&gt;遇到运算符,出栈两个运算数,做运算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;class ExpressionOperation {
+    func input(expression:[String]) -&amp;gt; Int {
+        let stack = Stack&amp;lt;Int&amp;gt;()
+        
+        for value in expression {
+            if isInt(string: value) {
+                stack.push(Int(value)!)
+            }
+            else {
+                let a = stack.pop()!
+                let b = stack.pop()!
+                var ret = 0
+                
+                switch value {
+                    case &amp;#34;+&amp;#34;:
+                        ret = a + b;
+                    case &amp;#34;-&amp;#34;:
+                        ret = b - a;
+                    case &amp;#34;*&amp;#34;:
+                        ret = a * b;
+                    case &amp;#34;/&amp;#34;:
+                        ret = b / a;
+             
+                    default:
+                        ret = 0
+                }
+                stack.push(ret)
+            }
+        }
+        return stack.top.next!.data!
+    }
+    
+    func isInt(string: String) -&amp;gt; Bool {
+        let scan: Scanner = Scanner(string: string)
+        var val:Int = 0
+        return scan.scanInt(&amp;amp;val) &amp;amp;&amp;amp; scan.isAtEnd
+    }
+}
+
+let test1 = [&amp;#34;1&amp;#34;,&amp;#34;1&amp;#34;,&amp;#34;+&amp;#34;,&amp;#34;2&amp;#34;,&amp;#34;*&amp;#34;,&amp;#34;2&amp;#34;,&amp;#34;-&amp;#34;,&amp;#34;1&amp;#34;,&amp;#34;/&amp;#34;]
+let test2 = [&amp;#34;2&amp;#34;,&amp;#34;9&amp;#34;,&amp;#34;3&amp;#34;,&amp;#34;/&amp;#34;,&amp;#34;+&amp;#34;,&amp;#34;4&amp;#34;,&amp;#34;-&amp;#34;]
+let exp = ExpressionOperation()
+exp.input(expression: test)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;中缀表达式求值&#34;&gt;中缀表达式求值&lt;/h3&gt;
+
+&lt;p&gt;基本策略:将中缀表达式转换为后缀表示式,然后求值&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;从头到尾读取中缀表达式的每个元素&lt;/li&gt;
+&lt;li&gt;运算数:直接输出&lt;/li&gt;
+&lt;li&gt;左括号:入栈&lt;/li&gt;
+&lt;li&gt;右括号:将栈顶的运算符出栈并输出,直到遇到左括号(出栈,不输出)&lt;/li&gt;
+&lt;li&gt;运算符:
+
+&lt;ul&gt;
+&lt;li&gt;若优先级大于栈顶运算符时,则入栈&lt;/li&gt;
+&lt;li&gt;若优先级小于栈顶运算符时,将栈顶运算符出栈并输出,再比较新的栈顶运算符,直到该运算符优先级大于栈顶运算符为止,然后该运算符入栈&lt;/li&gt;
+&lt;li&gt;若对各个元素处理完毕,则把堆栈中留存的运算符一并输出&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;其他应用&#34;&gt;其他应用&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数调用及递归实现&lt;/li&gt;
+&lt;li&gt;深度优先搜索&lt;/li&gt;
+&lt;li&gt;回溯算法&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>线性表</title>
       <link>https://rangerzz.github.io/post/8/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
@@ -34,7 +359,7 @@
 
 &lt;h2 id=&#34;线性表&#34;&gt;线性表&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;线性表(Linear List)&lt;/strong&gt;:由同类型数据元素构成有序序列的线性结构&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;线性表(Linear List)&lt;/strong&gt;:由同类型数据元素构成有序序列的线性结构,一对一&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;表中元素的个数称为线性表的长度&lt;/li&gt;
@@ -42,10 +367,16 @@
 &lt;li&gt;表起始位置称为表头,结束位置称为表尾&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;基本操作&#34;&gt;基本操作&lt;/h3&gt;
+&lt;h2 id=&#34;线性表的抽象数据类型描述&#34;&gt;线性表的抽象数据类型描述&lt;/h2&gt;
+
+&lt;h3 id=&#34;类型名称-线性表-list&#34;&gt;类型名称:线性表(List)&lt;/h3&gt;
+
+&lt;h3 id=&#34;数据对象集-线性表是n-n-0-个元素构成的有序序列-a1-a2-an&#34;&gt;数据对象集:线性表是n(n&amp;gt;=0)个元素构成的有序序列(a1,a2,&amp;hellip;.an)&lt;/h3&gt;
+
+&lt;h3 id=&#34;操作集&#34;&gt;操作集&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;建表&lt;/li&gt;
+&lt;li&gt;初始化一个空线性表&lt;/li&gt;
 &lt;li&gt;是否空表&lt;/li&gt;
 &lt;li&gt;查找
 
@@ -58,9 +389,9 @@
 &lt;li&gt;表长&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;两种实现方式&#34;&gt;两种实现方式&lt;/h3&gt;
+&lt;h2 id=&#34;线性表的实现方式&#34;&gt;线性表的实现方式&lt;/h2&gt;
 
-&lt;h4 id=&#34;数组实现&#34;&gt;数组实现&lt;/h4&gt;
+&lt;h3 id=&#34;线性表的顺序存储实现-数组&#34;&gt;线性表的顺序存储实现(数组)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -179,7 +510,7 @@ struct LinearListUseArray&amp;lt;T&amp;gt; where T : Equatable, T : Any {
 }&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;h4 id=&#34;链表实现&#34;&gt;链表实现&lt;/h4&gt;
+&lt;h3 id=&#34;线性表的链式存储实现-链表&#34;&gt;线性表的链式存储实现(链表)&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;不要求逻辑上相邻的元素在物理存储上也相邻&lt;/li&gt;
@@ -357,7 +688,7 @@ list.insert(value: &amp;#34;bbb&amp;#34;, at: 1)
 list.insert(value: &amp;#34;ccc&amp;#34;, at: 2)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;h3 id=&#34;广义表&#34;&gt;广义表&lt;/h3&gt;
+&lt;h2 id=&#34;广义表&#34;&gt;广义表&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;广义表是线性表的推广&lt;/li&gt;
@@ -387,7 +718,17 @@ struct GNode{
     GList Next; /* 指向后继结点 */
 };&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;
+&lt;h2 id=&#34;多重链表&#34;&gt;多重链表&lt;/h2&gt;
+
+&lt;p&gt;链表中的节点可能同时隶属于多个链&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多重链表中的节点的指针域会有多个,例如广义表中的Next和SubList两个指针域&lt;/li&gt;
+&lt;li&gt;但包含两个指针域的链表不一定是多重链表,如双向链表不是多重链表&lt;/li&gt;
+&lt;li&gt;多重链表有广泛的用途,如树,图这种复杂度数据结构都可以用多重链表的方式实现存储&lt;/li&gt;
+&lt;/ul&gt;
+</description>
       
     </item>
     
@@ -403,18 +744,64 @@ struct GNode{
 &lt;p&gt;大学时学习的数据结构课程,只剩下零星的记忆,在工作中用到时候,对一些概念定义总是似曾相识却又不甚透彻,所以决心重新系统的学习一下数据结构与算法这门课程.
 本系列文章是我在学习&lt;strong&gt;中国大学MOOC网中浙江大学陈越、何钦铭老师的《数据结构》&lt;/strong&gt;这门课程的学习笔记.&lt;/p&gt;
 
-&lt;h1 id=&#34;数据结构&#34;&gt;数据结构&lt;/h1&gt;
+&lt;h2 id=&#34;数据结构&#34;&gt;数据结构&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;“数据结构(data structure)是计算机中存储、组织
 数据的方式。”-中文维基百科&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;解决问题方法的效率,和数据的组织方式有关.
-解决问题方法的效率,和空间的利用效率有关.
-解决问题方法的效率,和算法的巧妙程度有关.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解决问题方法的效率,和数据的组织方式有关.&lt;/li&gt;
+&lt;li&gt;解决问题方法的效率,和空间的利用效率有关.&lt;/li&gt;
+&lt;li&gt;解决问题方法的效率,和算法的巧妙程度有关.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&#34;算法&#34;&gt;算法&lt;/h2&gt;
+&lt;h3 id=&#34;什么是数据结构&#34;&gt;什么是数据结构&lt;/h3&gt;
+
+&lt;h4 id=&#34;数据对象在计算机中的组织方式&#34;&gt;数据对象在计算机中的组织方式&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;逻辑结构&lt;/li&gt;
+&lt;li&gt;物理存储结构&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;数据对象必定与一系列加在其上的操作相关联&#34;&gt;数据对象必定与一系列加在其上的操作相关联&lt;/h4&gt;
+
+&lt;h4 id=&#34;完成这些操作所用的方法就是-算法&#34;&gt;完成这些操作所用的方法就是&lt;strong&gt;算法&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;h3 id=&#34;抽象数据类型-abstract-data-type&#34;&gt;抽象数据类型(Abstract Data Type)&lt;/h3&gt;
+
+&lt;h4 id=&#34;数据类型&#34;&gt;数据类型&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;数据对象集&lt;/li&gt;
+&lt;li&gt;数据集合相关联的操作集&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;抽象&#34;&gt;抽象&lt;/h4&gt;
+
+&lt;p&gt;描述数据类型的方法不依赖于具体实现
+* 与存放数据的机器无关
+* 与数据存储的物理结构无关
+* 与实现操作的算法和编程语言无关&lt;/p&gt;
+
+&lt;h2 id=&#34;算法-algorithm&#34;&gt;算法(Algorithm)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;一个有限指令集&lt;/li&gt;
+&lt;li&gt;接受一些输入(有些情况不需要输入)&lt;/li&gt;
+&lt;li&gt;产生输出&lt;/li&gt;
+&lt;li&gt;一定在有限步骤后终止&lt;/li&gt;
+&lt;li&gt;每一条指令必须
+
+&lt;ul&gt;
+&lt;li&gt;有充分明确的目标,不可以有歧义&lt;/li&gt;
+&lt;li&gt;计算机能处理的范围之内&lt;/li&gt;
+&lt;li&gt;描述应不依赖于任何一种计算机语言以及具体的实现手段
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;空间复杂图s-n&#34;&gt;空间复杂图S(n)&lt;/h3&gt;
 
@@ -432,7 +819,7 @@ struct GNode{
 
 &lt;ul&gt;
 &lt;li&gt;T1(n) + T2(n) = max( O(f1(n)), O(f2(n)) )&lt;/li&gt;
-&lt;li&gt;T1(n)  T2(n) = O( f1(n)  f2(n) )&lt;/li&gt;
+&lt;li&gt;T1(n) * T2(n) = O( f1(n) * f2(n) )&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;若T(n)是关于n的k阶多项式，那么T(n)=Θ(nk)&lt;/li&gt;
 &lt;li&gt;一个for循环的时间复杂度等于循环次数乘以循环体
