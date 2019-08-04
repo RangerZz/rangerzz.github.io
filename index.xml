@@ -24,6 +24,279 @@
     </item>
     
     <item>
+      <title>HTTP基础(上)</title>
+      <link>https://rangerzz.github.io/post/11/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://rangerzz.github.io/post/11/</guid>
+      
+        <description>
+
+&lt;h2 id=&#34;osi网络分层&#34;&gt;OSI网络分层&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分层&lt;/th&gt;
+&lt;th&gt;OSI分层&lt;/th&gt;
+&lt;th&gt;该层协议&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;td&gt;http、ssh、smtp、pop、ssl/tls、ftp、mime、DNS&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;表示层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;会话层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;td&gt;tcp、udp&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;td&gt;ip4、ip6、ARP（解析地址、根据ip地址反查出对应MAC地址）&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;链路层&lt;/td&gt;
+&lt;td&gt;数据链路层&lt;/td&gt;
+&lt;td&gt;以太网、网线、光纤&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;物理层&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;三次握手&#34;&gt;三次握手&lt;/h2&gt;
+
+&lt;p&gt;握手过程中使用了TCP的标志（flag）
+SYN：synchronize
+ACK：acknowledgement&lt;/p&gt;
+
+&lt;p&gt;发送端-&amp;gt;接收端：发送标有SYN的数据包&lt;/p&gt;
+
+&lt;p&gt;接收端-&amp;gt;发送端：接收到数据包，发送标有SYN/ACK的数据包&lt;/p&gt;
+
+&lt;p&gt;发送端-&amp;gt;接收端：收到数据包，发送标有ACK的数据包，握手结束&lt;/p&gt;
+
+&lt;p&gt;如果某个阶段莫名中断，TCP协议会再次握手&lt;/p&gt;
+
+&lt;h3 id=&#34;tcp的三次握手过程-为什么会采用三次握手-若采用二次握手可以吗&#34;&gt;TCP的三次握手过程？为什么会采用三次握手，若采用二次握手可以吗？&lt;/h3&gt;
+
+&lt;p&gt;答:建立连接的过程是利用客户服务器模式，假设主机A为客户端，主机B为服务器端。&lt;/p&gt;
+
+&lt;p&gt;（1）TCP的三次握手过程：主机A向B发送连接请求；主机B对收到的主机A的报文段进行确认；主机A再次对主机B的确认进行确认。&lt;/p&gt;
+
+&lt;p&gt;（2）采用三次握手是为了防止失效的连接请求报文段突然又传送到主机B，因而产生错误。失效的连接请求报文段是指：主机A发出的连接请求没有收到主机B的确认，于是经过一段时间后，主机A又重新向主机B发送连接请求，且建立成功，顺序完成数据传输。考虑这样一种特殊情况，主机A第一次发送的连接请求并没有丢失，而是因为网络节点导致延迟达到主机B，主机B以为是主机A又发起的新连接，于是主机B同意连接，并向主机A发回确认，但是此时主机A根本不会理会，主机B就一直在等待主机A发送数据，导致主机B的资源浪费。&lt;/p&gt;
+
+&lt;p&gt;（3）采用两次握手不行，原因就是上面说的实效的连接请求的特殊情况&lt;/p&gt;
+
+&lt;h2 id=&#34;四次挥手&#34;&gt;四次挥手&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/15638366103723/15638384794987.jpg&#34; alt=&#34;&#34; /&gt;
+A为客户端，B为服务端&lt;/p&gt;
+
+&lt;p&gt;为什么是四次呢？
+TCP采用全双工模式&lt;/p&gt;
+
+&lt;p&gt;全双工模式：可以同时进行双向的数据传输，所以AB既是发送端又是接收端，所以每次断开连接，需要一个发送端发送FIN断开请求，接收端发送ACK确认断开请求，两个连接，四次挥手&lt;/p&gt;
+
+&lt;p&gt;第一次分手：A发送FIN报文段给B，用来断开客户端到服务端的连接，此时A处于FIN_WAIT_1状态，等待B断开连接的确认&lt;/p&gt;
+
+&lt;p&gt;第二次分手：B收到A的FIN报文段后，回传一个ACK报文段，同意客户端的断开请求，此时B进入CLOSE_WAIT状态，等待A关闭连接，A收到B的ACK后，A关闭向B发送数据的连接，A进入FIN_WAIT_2状态&lt;/p&gt;
+
+&lt;p&gt;第三次挥手：A到B的连接断开后，B发送FIN报文段给A，请求断开服务端到客户端的连接，B进入LAST_ACK状态，等待A断开连接的确认&lt;/p&gt;
+
+&lt;p&gt;第四次挥手：A收到B的FIN后，回传一个ACK，同意关闭连接，此时A进入TIME_WAIT状态，B收到A的ACK报文段后，关闭服务端向客户端发送数据的连接，B进入CLOSED状态，此时客户端还处于TIME_WAIT，等待两个MSL时间后，自动进入CLOSED状态&lt;/p&gt;
+
+&lt;h2 id=&#34;dns服务&#34;&gt;DNS服务&lt;/h2&gt;
+
+&lt;p&gt;域名-解析-&amp;gt;IP地址&lt;/p&gt;
+
+&lt;p&gt;发送端-域名-&amp;gt;DNS
+DNS-IP-&amp;gt;发送端
+发送端-IP-&amp;gt;对应IP地址的服务器&lt;/p&gt;
+
+&lt;h2 id=&#34;一次完整http通信过程&#34;&gt;一次完整HTTP通信过程&lt;/h2&gt;
+
+&lt;p&gt;客户端-域名-&amp;gt;DNS&lt;/p&gt;
+
+&lt;p&gt;DNS-IP-&amp;gt;客户端&lt;/p&gt;
+
+&lt;p&gt;HTTP协议的职责：生成对目标Web服务器的请求报文&lt;/p&gt;
+
+&lt;p&gt;TCP协议的职责：为了方便通信，将HTTP请求报文按序号分割成多个报文段，把每个报文段可靠度传给对方&lt;/p&gt;
+
+&lt;p&gt;IP协议的职责：搜索对方地址，一边中转一遍传送&lt;/p&gt;
+
+&lt;p&gt;TCP协议的职责：收到报文段后，按序号重组请求报文&lt;/p&gt;
+
+&lt;p&gt;HTTP协议的职责：解析客户端对Web服务器的请求的内容的处理&lt;/p&gt;
+
+&lt;p&gt;请求处理的结果也同样利用TCP/IP协议向客户端回传&lt;/p&gt;
+
+&lt;h2 id=&#34;http协议报文&#34;&gt;HTTP协议报文&lt;/h2&gt;
+
+&lt;p&gt;请求报文由请求方法、请求URI、协议版本、可选的请求首部字段、内容实体构成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;POST(请求方法) /from(请求URI) HTTP/1.1(协议版本)
+
+Host:google.com
+Connection:keep-live
+Content-Type:application/x-www-form-urlencoded
+Content-Length:16
+...
+(请求首部字段)
+
+name=uers(内容实体)&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;响应报文由协议版本、状态码、解释状态码的原因短语、可选的响应首部字段和实体主体构成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;HTTP/1.1 200 OK
+Date:Tue, 10..
+Content-Length:36
+Content-Type:text/html
+
+&amp;lt;html&amp;gt;...&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;cookie&#34;&gt;Cookie&lt;/h2&gt;
+
+&lt;p&gt;HTTP是无状态协议，不对发生过的请求和响应的状态进行管理，无法根据之前的状态进行本次的请求处理
+由此产生的问题例如Web保存登录状态
+Cookie技术通过在请求和响应报文（首部字段）中写入Cookie信息来控制客户端的状态&lt;/p&gt;
+
+&lt;h3 id=&#34;请求过程&#34;&gt;请求过程&lt;/h3&gt;
+
+&lt;p&gt;A客户端 B服务器&lt;/p&gt;
+
+&lt;p&gt;没有cookie状态下
+A-请求（无cookie）-&amp;gt;B
+B（Set-Cookie）-响应（带Set-Cookie）-&amp;gt;A(保存cookie)&lt;/p&gt;
+
+&lt;p&gt;有cookie状态下
+A-请求（cookie）-&amp;gt;B检查cookie
+B-响应（根据cookie）-&amp;gt;A&lt;/p&gt;
+
+&lt;h2 id=&#34;状态码&#34;&gt;状态码&lt;/h2&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;类别&lt;/th&gt;
+&lt;th&gt;原因&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1XX&lt;/td&gt;
+&lt;td&gt;Information 信息性状态码&lt;/td&gt;
+&lt;td&gt;接收的请求正在处理&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2XX&lt;/td&gt;
+&lt;td&gt;Success 成功状态码&lt;/td&gt;
+&lt;td&gt;请求正常处理完毕&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3XX&lt;/td&gt;
+&lt;td&gt;Redirection 重定向状态码&lt;/td&gt;
+&lt;td&gt;需要进行附加操作以完成请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4XX&lt;/td&gt;
+&lt;td&gt;Client Error 客户端错误状态码&lt;/td&gt;
+&lt;td&gt;服务器无法处理请求&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5XX&lt;/td&gt;
+&lt;td&gt;Server Error 服务器错误状态码&lt;/td&gt;
+&lt;td&gt;服务器处理请求出错&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;常见状态码&#34;&gt;常见状态码&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;200 OK 表示从客户端发来的请求在服务端被正常处理了&lt;/li&gt;
+&lt;li&gt;202 No Content 表示服务器成功处理了请求，但在返回响应报文中不含实体的主体部分，一般在只需要客户端往服务端发送信息时使用&lt;/li&gt;
+&lt;li&gt;204 Partial Cotent 表示客户端进行了范围请求，服务器成功执行了这部分的GET请求&lt;/li&gt;
+&lt;li&gt;301 Moved Permanently 永久性重定向，表示请求的资源已被分配新的URI，以后应使用新的URI&lt;/li&gt;
+&lt;li&gt;302 Found 临时性重定向 ，表示请求的资源已被分配新的URI，希望本次使用新的URI访问&lt;/li&gt;
+&lt;li&gt;303 See Other 表示由于请求对应的资源存在着另一个URI，应使用GET方法定向获取请求的资源&lt;/li&gt;
+&lt;li&gt;304 Not Modified 表示客户端发送附带条件（If-Match、If-Modified-Since等）的请求时，服务器允许请求访问资源，但是未满足条件，直接返回304（可直接使用客户端未过期的缓存）&lt;/li&gt;
+&lt;li&gt;307 Temporary Redirect 临时重定向 类似302，每种浏览器行为不一致&lt;/li&gt;
+&lt;li&gt;400 Bad Request 表示请求报文中存在语法错误&lt;/li&gt;
+&lt;li&gt;401 Unauthorized 表示发送的请求需要通过HTTP认证（BASIC、DIGEST认证），若之前已经进行过一次请求，则表示用户认证失败&lt;/li&gt;
+&lt;li&gt;403 Forbidden 表示请求资源的访问被服务器拒绝了&lt;/li&gt;
+&lt;li&gt;404 Not Found 表示服务器上无法找到请求的资源&lt;/li&gt;
+&lt;li&gt;500 Internal Server Error 表示服务器执行请求时发生了错误&lt;/li&gt;
+&lt;li&gt;503 Service Unavailable 表示服务器处于超负载或者维护中，无法处理请求&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;http的缺点&#34;&gt;HTTP的缺点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通信使用明文（不加密），内容可能会被窃听&lt;/li&gt;
+&lt;li&gt;不验证通信方的身份，有可能遭遇伪装&lt;/li&gt;
+&lt;li&gt;无法证明报文的完整性，有可能已遭篡改&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>堆栈</title>
       <link>https://rangerzz.github.io/post/9/</link>
       <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
