@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://rangerzz.github.io/post/12/</loc>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://rangerzz.github.io/post/11/</loc>
     <lastmod>2019-08-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -94,7 +101,7 @@
   
   <url>
     <loc>https://rangerzz.github.io/tags/http/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -122,7 +129,7 @@
   
   <url>
     <loc>https://rangerzz.github.io/post/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -150,7 +157,7 @@
   
   <url>
     <loc>https://rangerzz.github.io/tags/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -318,14 +325,14 @@
   
   <url>
     <loc>https://rangerzz.github.io/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rangerzz.github.io/categories/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
