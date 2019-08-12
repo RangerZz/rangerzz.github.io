@@ -61,21 +61,27 @@
 
 &lt;p&gt;为了解决上述问题，&lt;strong&gt;使用由数字证书认证机构（CA）颁发的公开密钥证书。&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;所以完整的HTTPS认证过程是：
-1. 客户端提前内置CA的公开密钥
-2. 服务器把自己的公开密钥登陆至CA
-3. CA用自己的私钥向公开密钥部署数字签名并颁发公钥证书
-4. 客户端请求服务器时，拿到服务器的公钥证书后，使用内置的CA公开密钥，向CA验证公钥证书上的数字签名，确认服务器的公开密钥的真实性
-5. 客户端使用服务器公钥对报文加密后发送
-6. 服务器用私钥对报文解密&lt;/p&gt;
+&lt;p&gt;所以完整的HTTPS认证过程是：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端提前内置CA的公开密钥&lt;/li&gt;
+&lt;li&gt;服务器把自己的公开密钥登陆至CA&lt;/li&gt;
+&lt;li&gt;CA用自己的私钥向公开密钥部署数字签名并颁发公钥证书&lt;/li&gt;
+&lt;li&gt;客户端请求服务器时，拿到服务器的公钥证书后，使用内置的CA公开密钥，向CA验证公钥证书上的数字签名，确认服务器的公开密钥的真实性&lt;/li&gt;
+&lt;li&gt;客户端使用服务器公钥对报文加密后发送&lt;/li&gt;
+&lt;li&gt;服务器用私钥对报文解密&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&#34;认证&#34;&gt;认证&lt;/h2&gt;
 
-&lt;p&gt;确认用户身份
-* BASIC认证（基本认证）
-* DIGEST认证（摘要认证）
-* SSL客户端认证
-* FormBase认证（基于表单认证）&lt;/p&gt;
+&lt;p&gt;确认用户身份&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;BASIC认证（基本认证）&lt;/li&gt;
+&lt;li&gt;DIGEST认证（摘要认证）&lt;/li&gt;
+&lt;li&gt;SSL客户端认证&lt;/li&gt;
+&lt;li&gt;FormBase认证（基于表单认证）&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;ssl客户端认证-银行-12306&#34;&gt;SSL客户端认证&amp;ndash;银行、12306&lt;/h3&gt;
 
@@ -87,10 +93,13 @@
 
 &lt;p&gt;输入用户ID和密码等登录信息，发送给Web应用，基于认证结果来决定是否认证成功&lt;/p&gt;
 
-&lt;p&gt;由于HTTP是无状态协议，所以会使用Cookie来管理Session，弥补状态管理功能
-1. 客户端-登录信息-&amp;gt;服务器，记录认证状态
-2. 服务器-Session ID（Set-Cookit：）-&amp;gt;客户端，作为Cookie保存在本地
-3. 客户端-包含Session ID的Cookie：-&amp;gt;服务端，验证Session ID判定是否是真实用户&lt;/p&gt;
+&lt;p&gt;由于HTTP是无状态协议，所以会使用Cookie来管理Session，弥补状态管理功能&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;客户端-登录信息-&amp;gt;服务器，记录认证状态&lt;/li&gt;
+&lt;li&gt;服务器-Session ID（Set-Cookit：）-&amp;gt;客户端，作为Cookie保存在本地&lt;/li&gt;
+&lt;li&gt;客户端-包含Session ID的Cookie：-&amp;gt;服务端，验证Session ID判定是否是真实用户&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;通常，通过给密码加盐的方式增加额外信息，再使用散列函数计算出散列值后保存&lt;/strong&gt;&lt;/p&gt;
 
@@ -124,27 +133,36 @@
 
 &lt;p&gt;谷歌发布的，旨在解决HTTP的性能瓶颈，缩短Web页面的加载时间。&lt;/p&gt;
 
-&lt;p&gt;SPDY并没有完全改写HTTP协议，而是在TCP/IP的应用层与传输层直接通过新加会话层的形式运作，并且规定通信中使用SSL。使HTTP协议额外获得以下功能
-* 多路复用流
-* 赋予请求优先级
-* 压缩HTTP首部
-* 推送功能
-* 服务器提示功能&lt;/p&gt;
+&lt;p&gt;SPDY并没有完全改写HTTP协议，而是在TCP/IP的应用层与传输层直接通过新加会话层的形式运作，并且规定通信中使用SSL。使HTTP协议额外获得以下功能&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;多路复用流&lt;/li&gt;
+&lt;li&gt;赋予请求优先级&lt;/li&gt;
+&lt;li&gt;压缩HTTP首部&lt;/li&gt;
+&lt;li&gt;推送功能&lt;/li&gt;
+&lt;li&gt;服务器提示功能&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;全双工通信的websocket&#34;&gt;全双工通信的WebSocket&lt;/h3&gt;
 
 &lt;p&gt;一旦服务器和客户端直接建立起WebSocket协议的通信连接，之后所有的通信都依靠这个专用协议进行，可以互相发送JSON、XML、HTML或图片等任意格式数据&lt;/p&gt;
 
-&lt;p&gt;主要特点
-* 推送功能
-* 减少通信量（一直保持连接状态，首部信息小）&lt;/p&gt;
+&lt;p&gt;主要特点&lt;/p&gt;
 
-&lt;p&gt;连接过程
-* 连接开始时还是HTTP协议，所以由客户端先发起连接
-* 客户端：握手请求（Upgrade:websocket）
-* 服务器：握手响应（101 Switching Protocols）
-* 切换成WebSocket协议
-* 客户端服务端互相发送WebSocket独立的数据帧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;推送功能&lt;/li&gt;
+&lt;li&gt;减少通信量（一直保持连接状态，首部信息小）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;连接过程&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;连接开始时还是HTTP协议，所以由客户端先发起连接&lt;/li&gt;
+&lt;li&gt;客户端：握手请求（Upgrade:websocket）&lt;/li&gt;
+&lt;li&gt;服务器：握手响应（101 Switching Protocols）&lt;/li&gt;
+&lt;li&gt;切换成WebSocket协议&lt;/li&gt;
+&lt;li&gt;客户端服务端互相发送WebSocket独立的数据帧&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>
